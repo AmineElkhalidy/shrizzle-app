@@ -12,6 +12,7 @@ import SplashScreen from "./screens/Splash/SplashScreen.js";
 import Onboarding from "./screens/Onboarding/Onboarding.js";
 import Signup from "./screens/Signup/Signup.js";
 import SettingsScreen from "./screens/Settings/SettingsScreen.js";
+import ProfilePicName from "./components/CreateAccount/ProfilePicName.js";
 
 const fetchFonts = () =>
 {
@@ -63,6 +64,7 @@ export default function App() {
       {/* {currentlyLoaded} */}
       {/* <Contact />
       <NavBar /> */}
+      <ProfilePicName />
       {/* <SplashScreen /> */}
       {/* <Onboarding /> */}
       {/* <SettingsScreen /> */}
