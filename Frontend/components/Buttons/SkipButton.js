@@ -2,10 +2,10 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 
 
-function SkipButton({ text, onPress }) {
+function SkipButton({ text, onPress,color }) {
     return <TouchableOpacity onPress={onPress}>
       <View >
-        <Text style={styles.buttonText}>Skip for now</Text>
+        <Text  style={styles(color).buttonText}>Skip for now</Text>
       </View>
     </TouchableOpacity>;
 }
@@ -13,9 +13,9 @@ function SkipButton({ text, onPress }) {
 export default SkipButton;
 
 
-const styles = StyleSheet.create({
+const styles = (color) => StyleSheet.create({
   buttonText: {
-    color: '#00285c',
+    color: color || '#00285c',
     textDecorationLine:"underline",
     fontWeight: 'bold',
     fontSize: 16,

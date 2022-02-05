@@ -9,8 +9,8 @@ import {
   Image,
 } from "react-native";
 
-import DefaultButton from "../Buttons/DefaultButton"
-import SkipButton from "../Buttons/SkipButton"
+import DefaultButton from "../../components/Buttons/DefaultButton"
+import SkipButton from "../../components/Buttons/SkipButton"
 
 
 function GetUserLocation({name}) {

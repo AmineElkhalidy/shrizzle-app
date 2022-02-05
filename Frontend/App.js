@@ -6,13 +6,14 @@ import { SafeAreaView } from "react-native";
 import * as Fonts from 'expo-font';
 import AppLoading from "expo-app-loading";
 // import { useFonts, Poppins_400Regular} from '@expo-google-fonts/poppins';
-import NavBar from "./components/NavBar.js";
+import NavBar from "./components/Navbar/NavBar.js";
 import LoginScreen from "./screens/Login/LoginScreen.js";
 import SplashScreen from "./screens/Splash/SplashScreen.js";
 import Onboarding from "./screens/Onboarding/Onboarding.js";
 import Signup from "./screens/Signup/Signup.js";
 import SettingsScreen from "./screens/Settings/SettingsScreen.js";
-import ProfilePicName from "./components/CreateAccount/ProfilePicName.js";
+import ProfilePicName from "./screens/CreateAccount/ProfilePicName.js";
+import UserBio from "./screens/CreateAccount/UserBio.js";
 
 const fetchFonts = () =>
 {
@@ -57,17 +58,18 @@ export default function App() {
     return <SplashScreen />;
   }else 
   {
-    return currentlyLoaded;
-  }
+  //   return currentlyLoaded;
+  // }
   return (
     <SafeAreaView style={GlobalStyles.droidSafeArea}>
       {/* {currentlyLoaded} */}
       {/* <Contact />
       <NavBar /> */}
-      <ProfilePicName />
+      {/* <ProfilePicName /> */}
+      <UserBio />
       {/* <SplashScreen /> */}
       {/* <Onboarding /> */}
       {/* <SettingsScreen /> */}
     </SafeAreaView>
-  );
+  );}
 }

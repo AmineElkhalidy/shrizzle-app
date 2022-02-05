@@ -2,10 +2,10 @@ import React from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 import Colors from '../../constants/Colors';
 
-function DefaultInput({placeholder}) {
+function DefaultInput(props) {
       return(     <View  style={styles.container}>
             <View style={styles.inputContainer}>
-               <TextInput placeholder={placeholder} style={styles.input}/> 
+               <TextInput {...props} style={styles.input}/> 
             </View>
       </View>)
 }
