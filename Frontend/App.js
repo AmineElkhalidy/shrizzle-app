@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { View, Text } from "react-native";
 import GlobalStyles from './GlobalStyles.js';
 import Contact from "./screens/Contact.js";
@@ -11,6 +11,7 @@ import LoginScreen from "./screens/Login/LoginScreen.js";
 import SplashScreen from "./screens/Splash/SplashScreen.js";
 import Onboarding from "./screens/Onboarding/Onboarding.js";
 import Signup from "./screens/Signup/Signup.js";
+import SettingsScreen from "./screens/Settings/SettingsScreen.js";
 
 const fetchFonts = () =>
 {
@@ -25,6 +26,12 @@ const fetchFonts = () =>
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
   const [switchTo, setSwitchTo] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowSplash(false), 5000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const switchToHandler = () =>
   {
@@ -43,15 +50,22 @@ export default function App() {
   {
     return <AppLoading startAsync={fetchFonts} onFinish={() => setFontLoaded(true)} onError={(e) => console.log(e)} />;
   }
+
+  if(showSplash)
+  {
+    return <SplashScreen />;
+  }else 
+  {
+    return currentlyLoaded;
+  }
   return (
     <SafeAreaView style={GlobalStyles.droidSafeArea}>
       {/* {currentlyLoaded} */}
-      {/* <Signup /> */}
-      {/* <LoginScreen /> */}
-      <Contact />
-      <NavBar />
-      {/* <SplashScreen />
-      <Onboarding /> */}
+      {/* <Contact />
+      <NavBar /> */}
+      {/* <SplashScreen /> */}
+      {/* <Onboarding /> */}
+      {/* <SettingsScreen /> */}
     </SafeAreaView>
   );
 }

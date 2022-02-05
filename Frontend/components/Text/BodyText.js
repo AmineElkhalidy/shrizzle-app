@@ -4,7 +4,7 @@ import Colors from '../../constants/Colors';
 
 const BodyText = (props) => {
   return (
-      <Text style={{...styles.text, ...props.style}}>{props.children}</Text>
+    <Text style={{...styles.text, ...props.style}}>{props.children}</Text>
   );
 };
 

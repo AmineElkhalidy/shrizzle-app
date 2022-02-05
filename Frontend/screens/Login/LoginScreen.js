@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   StyleSheet,
   View,
@@ -6,63 +6,68 @@ import {
   Dimensions,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
+  KeyboardAvoidingView,
 } from "react-native";
-import { Feather } from '@expo/vector-icons';
+import { Feather } from "@expo/vector-icons";
 import InputText from "../../components/InputText/InputText";
 import BodyText from "../../components/Text/BodyText";
 import MainButton from "../../components/UI/MainButton";
 import Colors from "../../constants/Colors";
 
 const LoginScreen = (props) => {
-
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} >
-      <View style={styles.screen}>
-        <View style={styles.topPart}>
-          <View style={styles.circle}></View>
-          <View style={styles.textContainer}>
-            <BodyText style={styles.title}>New here?</BodyText>
-            <BodyText style={styles.subtitle}>
-              Setup a new account with just a few clicks!
-            </BodyText>
-            <TouchableOpacity activeOpacity={0.5} onPress={() => props.onClick()} >
-              <MainButton style={styles.buttonContainer}>Sign Up</MainButton>
+    <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={30} > 
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <View style={styles.screen}>
+          <View style={styles.topPart}>
+            <View style={styles.circle}></View>
+            <View style={styles.textContainer}>
+              <BodyText style={styles.title}>New here?</BodyText>
+              <BodyText style={styles.subtitle}>
+                Setup a new account with just a few clicks!
+              </BodyText>
+              <TouchableOpacity
+                activeOpacity={0.5}
+                onPress={() => props.onClick()}
+              >
+                <MainButton style={styles.buttonContainer}>Sign Up</MainButton>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <View style={styles.bottomPart}>
+            <BodyText style={styles.containerTitle}>Welcome Back!</BodyText>
+            <View style={styles.inputContainer}>
+              <InputText
+                autoCapitalize="none"
+                keyboardType="email-address"
+                placeholder="Email address"
+                autoCorrect={false}
+              />
+            </View>
+
+            <View style={styles.inputContainer}>
+              <InputText
+                autoCapitalize="none"
+                placeholder="Password"
+                autoCorrect={false}
+                secureTextEntry={true}
+              />
+            </View>
+
+            <View style={styles.rememberContainer}>
+              <Feather name="square" size={20} color={Colors.blue} />
+              <Text style={styles.rememberText}>Remember Me</Text>
+            </View>
+
+            <TouchableOpacity>
+              <MainButton style={styles.loginButton}>Login</MainButton>
             </TouchableOpacity>
           </View>
         </View>
-
-        <View style={styles.bottomPart}>
-          <BodyText style={styles.containerTitle}>Welcome Back!</BodyText>
-          <View style={styles.inputContainer}>
-            <InputText
-              style={styles.inputContainer}
-              autoCapitalize="none"
-              keyboardType="email-address"
-              placeholder="Email address"
-              autoCorrect={false}
-            />
-          </View>
-
-          <View style={styles.inputContainer}>
-            <InputText
-              autoCapitalize="none"
-              placeholder="Password"
-              autoCorrect={false}
-              secureTextEntry={true}
-            />
-          </View>
-
-          <View style={styles.rememberContainer} >
-            <Feather name="square" size={20} color={Colors.blue} /><Text style={styles.rememberText} >Remember Me</Text>
-          </View>
-
-          <TouchableOpacity>
-            <MainButton style={styles.loginButton}>Login</MainButton>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </TouchableWithoutFeedback>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -127,16 +132,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 20,
   },
-  rememberContainer:{
-    width: '31%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginVertical: 5
+  rememberContainer: {
+    width: "31%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginVertical: 5,
   },
-  rememberText:{
-      fontFamily: 'Poppins-Medium',
-      color: Colors.blue
+  rememberText: {
+    fontFamily: "Poppins-Medium",
+    color: Colors.blue,
   },
   loginButton: {
     backgroundColor: Colors.blue,

@@ -13,7 +13,6 @@ const Signup = (props) => {
 
         <View style={styles.inputContainer}>
           <InputText
-            style={styles.inputContainer}
             autoCapitalize="none"
             keyboardType="default"
             placeholder="Full Name"
@@ -23,7 +22,6 @@ const Signup = (props) => {
 
         <View style={styles.inputContainer}>
           <InputText
-            style={styles.inputContainer}
             autoCapitalize="none"
             keyboardType="email-address"
             placeholder="Email address"
@@ -33,7 +31,6 @@ const Signup = (props) => {
 
         <View style={styles.inputContainer}>
           <InputText
-            style={styles.inputContainer}
             autoCapitalize="none"
             keyboardType="default"
             placeholder="Password"
