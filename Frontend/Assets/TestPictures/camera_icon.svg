@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="73.637" height="73.637" viewBox="0 0 73.637 73.637">
+  <defs>
+    <filter id="Rectangle_139" x="0" y="0" width="73.637" height="73.637" filterUnits="userSpaceOnUse">
+      <feOffset dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feFlood flood-opacity="0.129"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="camera_icon" transform="translate(-225 -265)">
+    <g transform="matrix(1, 0, 0, 1, 225, 265)" filter="url(#Rectangle_139)">
+      <rect id="Rectangle_139-2" data-name="Rectangle 139" width="43.637" height="43.637" rx="21.818" transform="translate(15 10)" fill="#002b5e"/>
+    </g>
+    <g id="camera_icon-2" data-name="camera_icon" transform="translate(251.63 289.012)">
+      <path id="Tracé_515" data-name="Tracé 515" d="M66.976,98.531h-3.35l-2-2.025s-.01-.01-.015-.01l-.01-.01h0A1.623,1.623,0,0,0,60.44,96H56.272a1.641,1.641,0,0,0-1.221.541v0l-1.96,1.985H49.667A1.648,1.648,0,0,0,48,100.178v10.029a1.669,1.669,0,0,0,1.667,1.672H66.976a1.672,1.672,0,0,0,1.667-1.672V100.178A1.651,1.651,0,0,0,66.976,98.531Zm-8.654,10.843a4.6,4.6,0,1,1,4.585-4.6A4.6,4.6,0,0,1,58.322,109.373Zm8.342-8.188a.7.7,0,1,1,.695-.7A.7.7,0,0,1,66.663,101.186Z" transform="translate(-48 -96)" fill="#fff"/>
+      <path id="Tracé_516" data-name="Tracé 516" d="M189.664,202.9a3.474,3.474,0,1,0,3.464,3.474A3.466,3.466,0,0,0,189.664,202.9Z" transform="translate(-179.342 -197.595)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

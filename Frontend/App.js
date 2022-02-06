@@ -5,14 +5,15 @@ import Contact from "./screens/Contact.js";
 import { SafeAreaView } from "react-native";
 import * as Fonts from 'expo-font';
 import AppLoading from "expo-app-loading";
-// import { useFonts, Poppins_400Regular} from '@expo-google-fonts/poppins';
-import NavBar from "./components/NavBar.js";
+import NavBar from "./components/Navbar/NavBar.js";
 import LoginScreen from "./screens/Login/LoginScreen.js";
 import SplashScreen from "./screens/Splash/SplashScreen.js";
 import Onboarding from "./screens/Onboarding/Onboarding.js";
 import Signup from "./screens/Signup/Signup.js";
 import SettingsScreen from "./screens/Settings/SettingsScreen.js";
 import BusinessProfile from "./screens/Settings/Profile/BusinessProfile.js";
+import ProfilePicName from "./screens/CreateAccount/ProfilePicName.js";
+import UserBio from "./screens/CreateAccount/UserBio.js";
 
 const fetchFonts = () =>
 {
@@ -57,17 +58,27 @@ export default function App() {
   //   return <SplashScreen />;
   // }else 
   // {
+  // if(showSplash)
+  // {
+  //   return <SplashScreen />;
+  // }else 
+  // {
   //   return currentlyLoaded;
   // }
   return (
     <SafeAreaView style={GlobalStyles.droidSafeArea}>
-      <BusinessProfile />
+      {/* <BusinessProfile /> */}
       {/* {currentlyLoaded} */}
       {/* <Contact />
       <NavBar /> */}
+      {/* <ProfilePicName /> */}
+      {/* <UserBio /> */}
       {/* <SplashScreen /> */}
       {/* <Onboarding /> */}
       {/* <SettingsScreen /> */}
     </SafeAreaView>
   );
+
+
 }
+
