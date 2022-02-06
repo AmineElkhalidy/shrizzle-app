@@ -12,6 +12,7 @@ import SplashScreen from "./screens/Splash/SplashScreen.js";
 import Onboarding from "./screens/Onboarding/Onboarding.js";
 import Signup from "./screens/Signup/Signup.js";
 import SettingsScreen from "./screens/Settings/SettingsScreen.js";
+import BusinessProfile from "./screens/Settings/Profile/BusinessProfile.js";
 
 const fetchFonts = () =>
 {
@@ -51,15 +52,16 @@ export default function App() {
     return <AppLoading startAsync={fetchFonts} onFinish={() => setFontLoaded(true)} onError={(e) => console.log(e)} />;
   }
 
-  if(showSplash)
-  {
-    return <SplashScreen />;
-  }else 
-  {
-    return currentlyLoaded;
-  }
+  // if(showSplash)
+  // {
+  //   return <SplashScreen />;
+  // }else 
+  // {
+  //   return currentlyLoaded;
+  // }
   return (
     <SafeAreaView style={GlobalStyles.droidSafeArea}>
+      <BusinessProfile />
       {/* {currentlyLoaded} */}
       {/* <Contact />
       <NavBar /> */}
