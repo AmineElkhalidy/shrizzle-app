@@ -53,11 +53,7 @@ export default function App() {
     return <AppLoading startAsync={fetchFonts} onFinish={() => setFontLoaded(true)} onError={(e) => console.log(e)} />;
   }
 
-  // if(showSplash)
-  // {
-  //   return <SplashScreen />;
-  // }else 
-  // {
+
   // if(showSplash)
   // {
   //   return <SplashScreen />;
@@ -71,7 +67,7 @@ export default function App() {
       {/* {currentlyLoaded} */}
       {/* <Contact />
       <NavBar /> */}
-      {/* <ProfilePicName /> */}
+      {/* <ProfilePicName />  */}
       {/* <UserBio /> */}
       {/* <SplashScreen /> */}
       {/* <Onboarding /> */}

@@ -4,7 +4,7 @@ import {
 } from "react-native";
 import {line,curveBasis} from "d3-shape";
 import  {Path,Svg} from 'react-native-svg';
-
+import Colors from "../../constants/Colors";
 import StaticNavbar from "./StaticNavbar";
 
 const AnimatedSvg = Animated.createAnimatedComponent(Svg);
@@ -28,7 +28,7 @@ const tabs = [
   },
 ];
 const tabWidth = width / tabs.length;
-const backgroundColor = "white";
+const backgroundColor = Colors.blue;
 
 const getPath = () => {
   const left = line().x(d => d.x).y(d => d.y)([
