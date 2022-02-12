@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Dimensions, StyleSheet, TouchableOpacity, View } from "react-native";
 import BodyText from "../../components/Text/BodyText";
 import Colors from "../../constants/Colors";
 import InputText from "../../components/InputText/InputText";
 import MainButton from "../../components/UI/MainButton";
+import { AntDesign, Entypo, Feather } from "@expo/vector-icons";
 
 const Signup = (props) => {
+  const [changeEyeIcon, setChangeEyeIcon] = useState(false);
+
+  const changeEyeIconHandler = () => {
+    setChangeEyeIcon((prevState) => !prevState);
+  };
+
   return (
     <View style={styles.screen}>
       <View style={styles.signUpContainer}>
         <BodyText style={styles.signUpText}>Create Your Account</BodyText>
 
         <View style={styles.inputContainer}>
+          <AntDesign style={styles.icon} name="user" size={18} color="black" />
           <InputText
             autoCapitalize="none"
             keyboardType="default"
@@ -21,6 +29,7 @@ const Signup = (props) => {
         </View>
 
         <View style={styles.inputContainer}>
+          <Entypo style={styles.icon} name="email" size={18} color="black" />
           <InputText
             autoCapitalize="none"
             keyboardType="email-address"
@@ -29,15 +38,27 @@ const Signup = (props) => {
           />
         </View>
 
-        <View style={styles.inputContainer}>
-          <InputText
-            autoCapitalize="none"
-            keyboardType="default"
-            placeholder="Password"
-            secureTextEntry={true}
-            autoCorrect={false}
-          />
-        </View>
+        <TouchableOpacity onPress={changeEyeIconHandler} activeOpacity={1} >
+          <View style={styles.inputContainer}>
+            <Feather style={styles.icon} name="lock" size={18} color="black" />
+            <InputText
+              autoCapitalize="none"
+              keyboardType="default"
+              placeholder="Password"
+              secureTextEntry={changeEyeIcon ? false:true}
+              autoCorrect={false}
+            />
+
+            <View style={styles.iconContainer}>
+              <Entypo
+                style={styles.eyeIcon}
+                name={changeEyeIcon ? "eye" : "eye-with-line"}
+                size={20}
+                color="black"
+              />
+            </View>
+          </View>
+        </TouchableOpacity>
 
         <TouchableOpacity>
           <MainButton style={styles.signUpButton}>Sign Up</MainButton>
@@ -49,7 +70,10 @@ const Signup = (props) => {
         <View style={styles.textContainer}>
           <BodyText style={styles.title}>Already have an account?</BodyText>
 
-          <TouchableOpacity activeOpacity={0.5} onPress={() => props.onClick()} >
+          <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={() => props.navigation.navigate("Login")}
+          >
             <MainButton style={styles.buttonContainer}>Login</MainButton>
           </TouchableOpacity>
         </View>
@@ -67,7 +91,7 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    marginVertical: 50
+    marginVertical: 50,
   },
   signUpText: {
     color: Colors.blue,
@@ -82,7 +106,23 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     marginVertical: 8,
     alignItems: "center",
-    paddingHorizontal: 20,
+    paddingHorizontal: 12,
+    flexDirection: "row",
+  },
+  passwordInput: {
+    width: "98%",
+  },
+  icon: {
+    marginRight: 5,
+  },
+  iconContainer: {
+    position: "relative",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  eyeIcon: {
+    position: "absolute",
+    right: 20,
   },
   signUpButton: {
     backgroundColor: Colors.blue,
@@ -91,10 +131,10 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     marginVertical: 10,
   },
-  bottomPart:{
+  bottomPart: {
     height: Dimensions.get("window").height / 1.9,
   },
-  circle:{
+  circle: {
     height: "100%",
     width: "100%",
     borderTopLeftRadius: 175,
@@ -120,7 +160,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     borderColor: Colors.orange,
     borderWidth: 1,
-  }
+  },
 });
 
 export default Signup;

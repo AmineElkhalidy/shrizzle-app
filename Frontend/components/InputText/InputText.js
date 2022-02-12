@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   input: {
     width: "100%",
     height: "100%",
+    fontFamily: 'Poppins-Medium',
   },
 });
 

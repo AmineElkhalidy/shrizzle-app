@@ -14,11 +14,27 @@ import InputText from "../../components/InputText/InputText";
 import BodyText from "../../components/Text/BodyText";
 import MainButton from "../../components/UI/MainButton";
 import Colors from "../../constants/Colors";
+import { Entypo } from "@expo/vector-icons";
 
 const LoginScreen = (props) => {
+  // the state of changing the eye icon
+  const [ChangeEyeIcon, setChangeEyeIcon] = useState(false);
+
+  // the state for changing the check square icon
+  const [rememberMe, setRememberMe] = useState(false);
+
+  // handler functions of changing icons
+  const changeEyeIconHandler = () => {
+    setChangeEyeIcon((prevState) => !prevState);
+  };
+
+  const changeRememberMeIcon = () => {
+    setRememberMe((prevState) => !prevState);
+  };
+
   return (
-    <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={30} > 
-      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <KeyboardAvoidingView behavior="position">
         <View style={styles.screen}>
           <View style={styles.topPart}>
             <View style={styles.circle}></View>
@@ -29,7 +45,7 @@ const LoginScreen = (props) => {
               </BodyText>
               <TouchableOpacity
                 activeOpacity={0.5}
-                onPress={() => props.onClick()}
+                onPress={() => props.navigation.navigate("Signup")}
               >
                 <MainButton style={styles.buttonContainer}>Sign Up</MainButton>
               </TouchableOpacity>
@@ -39,6 +55,12 @@ const LoginScreen = (props) => {
           <View style={styles.bottomPart}>
             <BodyText style={styles.containerTitle}>Welcome Back!</BodyText>
             <View style={styles.inputContainer}>
+              <Entypo
+                style={styles.icon}
+                name="email"
+                size={18}
+                color="black"
+              />
               <InputText
                 autoCapitalize="none"
                 keyboardType="email-address"
@@ -47,27 +69,47 @@ const LoginScreen = (props) => {
               />
             </View>
 
-            <View style={styles.inputContainer}>
-              <InputText
-                autoCapitalize="none"
-                placeholder="Password"
-                autoCorrect={false}
-                secureTextEntry={true}
-              />
-            </View>
+            <TouchableOpacity onPress={changeEyeIconHandler} activeOpacity={1}>
+              <View style={styles.inputContainer}>
+                <Feather
+                  style={styles.icon}
+                  name="lock"
+                  size={18}
+                  color="black"
+                />
+                <InputText
+                  autoCapitalize="none"
+                  placeholder="Password"
+                  autoCorrect={false}
+                  secureTextEntry={!ChangeEyeIcon ? true : false}
+                  style={styles.passwordInput}
+                />
 
-            <View style={styles.rememberContainer}>
-              <Feather name="square" size={20} color={Colors.blue} />
-              <Text style={styles.rememberText}>Remember Me</Text>
-            </View>
+                <View style={styles.iconContainer}>
+                  <Entypo
+                    style={styles.eyeIcon}
+                    name={ChangeEyeIcon ? "eye" : "eye-with-line"}
+                    size={20}
+                    color="black"
+                  />
+                </View>
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={changeRememberMeIcon} activeOpacity={1} >
+              <View style={styles.rememberContainer}>
+                <Feather name={rememberMe ? "check-square":"square"} size={20} color={Colors.blue} />
+                <Text style={styles.rememberText}>Remember Me</Text>
+              </View>
+            </TouchableOpacity>
 
             <TouchableOpacity>
               <MainButton style={styles.loginButton}>Login</MainButton>
             </TouchableOpacity>
           </View>
         </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+      </KeyboardAvoidingView>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -130,7 +172,23 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     marginVertical: 8,
     alignItems: "center",
-    paddingHorizontal: 20,
+    paddingHorizontal: 12,
+    flexDirection: "row",
+  },
+  passwordInput: {
+    width: "98%",
+  },
+  icon: {
+    marginRight: 5,
+  },
+  iconContainer: {
+    position: "relative",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  eyeIcon: {
+    position: "absolute",
+    right: 20,
   },
   rememberContainer: {
     width: "31%",
