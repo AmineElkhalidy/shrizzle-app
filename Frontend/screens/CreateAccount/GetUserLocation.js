@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React from "react";
 
 import {
   StyleSheet,
@@ -7,32 +6,43 @@ import {
   Text,
   ImageBackground,
   Image,
+  TouchableOpacity,
 } from "react-native";
 
-import DefaultButton from "../../components/Buttons/DefaultButton"
-import SkipButton from "../../components/Buttons/SkipButton"
+import DefaultButton from "../../components/Buttons/DefaultButton";
+import SkipButton from "../../components/Buttons/SkipButton";
 
-
-function GetUserLocation({name}) {
-    return <ImageBackground source={require("../../Assets/TestPictures/orange_bg.png")} style={styles.screen}>
-      
+function GetUserLocation({ name }) {
+  return (
+    <ImageBackground
+      source={require("../../Assets/TestPictures/orange_bg.png")}
+      style={styles.screen}
+    >
       <View style={styles.container}>
         <Text style={styles.hi}>Hi {name},</Text>
-        <Text style={styles.info}>Allow us to help you meet new people by  </Text>
+        <Text style={styles.info}>
+          Allow us to help you meet new people by{" "}
+        </Text>
         <Text style={styles.info}>sharing your location</Text>
 
         <View style={styles.imageContainer}>
-          <Image source={require("../../Assets/TestPictures/location_img.png")}></Image>
+          <Image
+            source={require("../../Assets/TestPictures/location_img.png")}
+          ></Image>
         </View>
-
-        <DefaultButton text={"Detect My location"} />
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => props.navigation.navigate("UserBio")}
+        >
+          <DefaultButton text={"Detect My location"} />
+        </TouchableOpacity>
         <SkipButton />
       </View>
-    </ImageBackground>;
+    </ImageBackground>
+  );
 }
 
 export default GetUserLocation;
-
 
 const styles = StyleSheet.create({
   screen: {
@@ -41,26 +51,25 @@ const styles = StyleSheet.create({
     position: "relative",
     padding: 0,
   },
-  container:{
+  container: {
     padding: 20,
     position: "relative",
-    
   },
   hi: {
-    paddingTop:60,
-    marginBottom:10,
+    paddingTop: 60,
+    marginBottom: 10,
     color: "#00285c",
     fontSize: 50,
-    fontWeight:"bold",
+    fontWeight: "bold",
   },
   info: {
     color: "white",
     fontSize: 15,
   },
-  imageContainer:{
-    paddingTop:100,
-    display:"flex",
+  imageContainer: {
+    paddingTop: 100,
+    display: "flex",
     justifyContent: "center",
-    alignItems:"center"
-  }
+    alignItems: "center",
+  },
 });

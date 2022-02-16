@@ -6,15 +6,24 @@ import { SafeAreaView } from "react-native";
 import * as Fonts from "expo-font";
 import AppLoading from "expo-app-loading";
 import NavBar from "./components/Navbar/NavBar.js";
-import LoginScreen from "./screens/Login/LoginScreen.js";
+
+//pages
 import SplashScreen from "./screens/Splash/SplashScreen.js";
-import Onboarding from "./screens/Onboarding/Onboarding.js";
+
+import GetStarted from "./screens/CreateAccount/GetStarted.js";
+import LoginScreen from "./screens/Login/LoginScreen.js";
 import Signup from "./screens/Signup/Signup.js";
-import SettingsScreen from "./screens/Settings/SettingsScreen.js";
-import BusinessProfile from "./screens/Settings/Profile/BusinessProfile.js";
+
+//creating account pages
+import GetUserLocation from "./screens/CreateAccount/GetUserLocation.js";
 import ProfilePicName from "./screens/CreateAccount/ProfilePicName.js";
 import UserBio from "./screens/CreateAccount/UserBio.js";
 
+import Onboarding from "./screens/Onboarding/Onboarding.js";
+import SettingsScreen from "./screens/Settings/SettingsScreen.js";
+import BusinessProfile from "./screens/Settings/Profile/BusinessProfile.js";
+
+//routing
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -34,7 +43,7 @@ export default function App() {
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowSplash(false), 5000);
+    const timer = setTimeout(() => setShowSplash(false), 2000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -84,6 +93,10 @@ export default function App() {
         {showSplash && <Stack.Screen name="Splash" component={SplashScreen} />}
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Signup" component={Signup} />
+        <Stack.Screen name="GetStarted" component={GetStarted} />
+        <Stack.Screen name="ProfilePicName" component={ProfilePicName} />
+        <Stack.Screen name="GetUserLocation" component={GetUserLocation} />
+        <Stack.Screen name="UserBio" component={UserBio} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React from "react";
 
 import {
   StyleSheet,
@@ -7,30 +6,39 @@ import {
   Text,
   ImageBackground,
   Image,
+  TouchableOpacity,
 } from "react-native";
 
-import DefaultButton from "../Buttons/DefaultButton"
+import DefaultButton from "../../components/Buttons/DefaultButton";
 
-
-function GetStarted() {
-    return <ImageBackground source={require("../../Assets/TestPictures/orange_bg.png")} style={styles.screen}>
-      
+function GetStarted(props) {
+  return (
+    <ImageBackground
+      source={require("../../Assets/TestPictures/orange_bg.png")}
+      style={styles.screen}
+    >
       <View style={styles.container}>
         <Text style={styles.hi}>Hi,</Text>
         <Text style={styles.info}>We need some informations about you </Text>
         <Text style={styles.info}>to setup your profile</Text>
 
         <View style={styles.imageContainer}>
-          <Image source={require("../../Assets/TestPictures/welcome_img.png")}></Image>
+          <Image
+            source={require("../../Assets/TestPictures/welcome_img.png")}
+          ></Image>
         </View>
-
-        <DefaultButton text={"Let's get started"} />
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => props.navigation.navigate("ProfilePicName")}
+        >
+          <DefaultButton text={"Let's get started"} />
+        </TouchableOpacity>
       </View>
-    </ImageBackground>;
+    </ImageBackground>
+  );
 }
 
 export default GetStarted;
-
 
 const styles = StyleSheet.create({
   screen: {
@@ -39,26 +47,25 @@ const styles = StyleSheet.create({
     position: "relative",
     padding: 0,
   },
-  container:{
+  container: {
     padding: 20,
     position: "relative",
-    
   },
   hi: {
-    paddingTop:60,
-    marginBottom:10,
+    paddingTop: 60,
+    marginBottom: 10,
     color: "#00285c",
     fontSize: 50,
-    fontWeight:"bold",
+    fontWeight: "bold",
   },
   info: {
     color: "white",
     fontSize: 15,
   },
-  imageContainer:{
-    paddingTop:100,
-    display:"flex",
+  imageContainer: {
+    paddingTop: 100,
+    display: "flex",
     justifyContent: "center",
-    alignItems:"center"
-  }
+    alignItems: "center",
+  },
 });
