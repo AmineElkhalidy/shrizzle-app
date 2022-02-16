@@ -45,7 +45,7 @@ const LoginScreen = (props) => {
               </BodyText>
               <TouchableOpacity
                 activeOpacity={0.5}
-                onPress={() => props.navigation.navigate("Signup")}
+                onPress={() => props.navigation.navigate("GetStarted")}
               >
                 <MainButton style={styles.buttonContainer}>Sign Up</MainButton>
               </TouchableOpacity>
@@ -96,9 +96,13 @@ const LoginScreen = (props) => {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={changeRememberMeIcon} activeOpacity={1} >
+            <TouchableOpacity onPress={changeRememberMeIcon} activeOpacity={1}>
               <View style={styles.rememberContainer}>
-                <Feather name={rememberMe ? "check-square":"square"} size={20} color={Colors.blue} />
+                <Feather
+                  name={rememberMe ? "check-square" : "square"}
+                  size={20}
+                  color={Colors.blue}
+                />
                 <Text style={styles.rememberText}>Remember Me</Text>
               </View>
             </TouchableOpacity>

@@ -38,14 +38,14 @@ const Signup = (props) => {
           />
         </View>
 
-        <TouchableOpacity onPress={changeEyeIconHandler} activeOpacity={1} >
+        <TouchableOpacity onPress={changeEyeIconHandler} activeOpacity={1}>
           <View style={styles.inputContainer}>
             <Feather style={styles.icon} name="lock" size={18} color="black" />
             <InputText
               autoCapitalize="none"
               keyboardType="default"
               placeholder="Password"
-              secureTextEntry={changeEyeIcon ? false:true}
+              secureTextEntry={changeEyeIcon ? false : true}
               autoCorrect={false}
             />
 
@@ -60,7 +60,10 @@ const Signup = (props) => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.5}
+          onPress={() => props.navigation.navigate("ProfilePicName")}
+        >
           <MainButton style={styles.signUpButton}>Sign Up</MainButton>
         </TouchableOpacity>
       </View>
