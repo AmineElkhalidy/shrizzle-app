@@ -1,6 +1,5 @@
 import axios from "axios";
 import { API_URL } from "../../constants/api";
-
 /**
  *
  * @param {string} email is the email of the identifier
