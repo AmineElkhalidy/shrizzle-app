@@ -15,10 +15,6 @@ export default function ContactList() {
 
   function renderContact() {
     var list = [];
-<<<<<<< HEAD
-=======
-
->>>>>>> dc9d2ded15266090dcaaa2d076f452a2f113663c
     list = contacts
       .filter((item) => {
         return item.selected == true;
@@ -28,38 +24,16 @@ export default function ContactList() {
           return item.selected == false;
         })
       );
-<<<<<<< HEAD
-    list.filter((item) => {
-      return item.name.includes(searchValue);
-    });
-=======
 
     list.filter((item) => {
       return item.name.includes(searchValue);
     });
 
->>>>>>> dc9d2ded15266090dcaaa2d076f452a2f113663c
     var filtered = [];
     list.map((item) => {
       if (item.name.toLowerCase().includes(searchValue.toLowerCase()))
         filtered.push(item);
     });
-<<<<<<< HEAD
-    filtered = filtered.map((item) => {
-      return (
-        <NormalContacts
-          name={item.name}
-          selected={item.selected}
-          profilePic={item.profilepic}
-          business={item.business}
-          personal={item.personal}
-        />
-      );
-    });
-    return filtered;
-  }
-
-=======
 
     filtered = filtered.map((item) => {
       return (
@@ -75,7 +49,6 @@ export default function ContactList() {
     return filtered;
   }
 
->>>>>>> dc9d2ded15266090dcaaa2d076f452a2f113663c
   return (
     <View>
       <View style={styles.ContactListHeader}>

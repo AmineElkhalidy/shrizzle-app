@@ -32,7 +32,6 @@ export const signUp = (fullName, email, password) => {
             personalProfile{
                 bio
                 instagram
-                __typename
             }
             
             businessProfile{

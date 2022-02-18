@@ -1,20 +1,22 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
+import { StyleSheet, TouchableOpacity,Dimensions, Text, View } from "react-native";
 
-function DefaultButton({ text, onPress }) {
+function SocialButton({ Icon, onPress }) {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.button}>
-        <Text style={styles.buttonText}>{text}</Text>
+        {Icon}
       </View>
     </TouchableOpacity>
   );
 }
 
-export default DefaultButton;
+export default SocialButton;
 
 const styles = StyleSheet.create({
   button: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
     borderRadius: 50,
     paddingVertical: 10,
     margin: 30,

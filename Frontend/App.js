@@ -27,6 +27,10 @@ import BusinessProfile from "./screens/Settings/Profile/BusinessProfile.js";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+//contexts
+import CreateUserProvider from "./contexts/CreateUserContext"
+
+
 const Stack = createNativeStackNavigator();
 
 const fetchFonts = () => {
@@ -88,7 +92,8 @@ export default function App() {
     //   {/* <SettingsScreen /> */}
     // </SafeAreaView>
 
-    <NavigationContainer>
+   <CreateUserProvider>
+      <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {showSplash && <Stack.Screen name="Splash" component={SplashScreen} />}
         <Stack.Screen name="Login" component={LoginScreen} />
@@ -99,5 +104,6 @@ export default function App() {
         <Stack.Screen name="UserBio" component={UserBio} />
       </Stack.Navigator>
     </NavigationContainer>
+     </CreateUserProvider>
   );
 }

@@ -1,11 +1,13 @@
 import React from "react";
 import {
+  Dimensions,
   StyleSheet,
   View,
   Text,
   ImageBackground,
-  Image,
   TextInput,
+  KeyboardAvoidingView,
+  TouchableOpacity,
 } from "react-native";
 
 //colors
@@ -15,30 +17,44 @@ import Colors from "../../constants/Colors";
 import DefaultButton from "../../components/Buttons/DefaultButton";
 import SkipButton from "../../components/Buttons/SkipButton";
 
+//contexts
+import { useCreateUserContext } from "../../contexts/CreateUserContext";
+
 function UserBio() {
+  const { setBio } = useCreateUserContext();
+
   return (
-    <ImageBackground
-      source={require("../../Assets/TestPictures/orange_bg_bottom.png")}
-      style={styles.screen}
-    >
-      <View style={styles.container}>
-        <Text style={styles.title}>Can you tell us a bit about yourself</Text>
+    <View style={styles.screen}>
+      <ImageBackground
+        source={require("../../Assets/TestPictures/orange_bg_bottom.png")}
+        style={styles.imageBackground}
+        resizeMode="cover"
+      >
+        <View style={styles.container}>
+          <Text style={styles.title}>Can you tell us a bit about yourself</Text>
 
-        <View style={styles.inputContainer}>
-          <View style={styles.inputTextContainer}>
-            <TextInput
-              style={styles.input}
-              multiline={true}
-              numberOfLines={15}
-              placeholder="Please enter your bio..."
-            />
+          <View style={styles.inputContainer}>
+            <View style={styles.inputTextContainer}>
+              <TextInput
+                style={styles.input}
+                multiline={true}
+                numberOfLines={15}
+                placeholder="Please enter your bio..."
+                onChangeText={(bioInput) => setBio(bioInput)}
+                textAlign="left"
+              />
+            </View>
           </View>
-        </View>
+          <TouchableOpacity activeOpacity={0.8} onPress={""}>
+            <DefaultButton text="Continue" />
+          </TouchableOpacity>
 
-        <DefaultButton text="Continue" />
-        <SkipButton color="#fff" />
-      </View>
-    </ImageBackground>
+          <TouchableOpacity>
+            <SkipButton color="#fff" />
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
+    </View>
   );
 }
 
@@ -46,15 +62,18 @@ export default UserBio;
 
 const styles = StyleSheet.create({
   screen: {
-    width: "100%",
-    height: "100%",
-    position: "relative",
-    padding: 0,
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  },
+  imageBackground: {
+    width: '100%',
+    height: '100%',
   },
   container: {
-    padding: 10,
+    paddingVertical: 10,
     paddingHorizontal: 30,
     position: "relative",
+    marginTop: 10,
   },
 
   title: {
@@ -62,24 +81,24 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     color: "#00285c",
     fontSize: 48,
-    fontWeight: "bold",
+    fontFamily: "Poppins-Bold",
   },
   inputContainer: {
     width: "100%",
-    marginTop: 30,
+    marginTop: 65,
   },
   inputTextContainer: {
-    width: 350,
+    width: "97%",
     borderColor: Colors.blue,
     backgroundColor: "white",
     borderWidth: 1,
     borderRadius: 25,
-    marginVertical: 8,
-    paddingVertical: 0,
   },
   input: {
-    width: 250,
-    marginHorizontal: 40,
-    textAlign: "left",
+    width: "100%",
+    textAlignVertical: "top",
+    margin: 15,
+    fontFamily: "Poppins",
+    fontSize: 16,
   },
 });
