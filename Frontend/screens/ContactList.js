@@ -15,7 +15,6 @@ export default function ContactList() {
 
   function renderContact() {
     var list = [];
-
     list = contacts
       .filter((item) => {
         return item.selected == true;

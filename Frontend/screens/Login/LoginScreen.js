@@ -45,7 +45,7 @@ const LoginScreen = (props) => {
               </BodyText>
               <TouchableOpacity
                 activeOpacity={0.5}
-                onPress={() => props.navigation.navigate("GetStarted")}
+                onPress={() => props.navigation.navigate("Signup")}
               >
                 <MainButton style={styles.buttonContainer}>Sign Up</MainButton>
               </TouchableOpacity>

@@ -5,12 +5,60 @@ import Colors from "../../constants/Colors";
 import InputText from "../../components/InputText/InputText";
 import MainButton from "../../components/UI/MainButton";
 import { AntDesign, Entypo, Feather } from "@expo/vector-icons";
+//helpers
+import { signUp } from "../../helpers/authHelpers/signUpHelper";
+
+//ignore firebase timer warning
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Setting a timer']);
 
 const Signup = (props) => {
   const [changeEyeIcon, setChangeEyeIcon] = useState(false);
 
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
   const changeEyeIconHandler = () => {
     setChangeEyeIcon((prevState) => !prevState);
+  };
+
+  const fullNameHandler = (name) => {
+    setFullName(name);
+  };
+
+  const emailHandler = (email) => {
+    setEmail(email);
+  };
+
+  const passwordHandler = (password) => {
+    setPassword(password);
+  };
+
+  const confirmPasswordHandler = (password) => {
+    setConfirmPassword(password);
+  };
+
+  const handleContinue = async () => {
+    if(confirmPassword === "" || password === "" || fullName === "" || email === "") return;
+    if(confirmPassword !== password) return;
+
+    try{
+      const result = await signUp(fullName,email,password)
+
+      if(result.status !== 200){
+        return
+      }else{
+        if(result.data.data.createUser !== null){
+          props.navigation.navigate("GetStarted");
+        }
+      }
+
+      
+    }catch(err){
+      console.log(err);
+    }
   };
 
   return (
@@ -25,6 +73,7 @@ const Signup = (props) => {
             keyboardType="default"
             placeholder="Full Name"
             autoCorrect={false}
+            onChangeText={(nameInput) =>fullNameHandler(nameInput)}
           />
         </View>
 
@@ -35,6 +84,7 @@ const Signup = (props) => {
             keyboardType="email-address"
             placeholder="Email address"
             autoCorrect={false}
+            onChangeText={(emailInput) =>emailHandler(emailInput)}
           />
         </View>
 
@@ -47,6 +97,7 @@ const Signup = (props) => {
               placeholder="Password"
               secureTextEntry={changeEyeIcon ? false : true}
               autoCorrect={false}
+              onChangeText={passwordHandler}
             />
 
             <View style={styles.iconContainer}>
@@ -60,10 +111,30 @@ const Signup = (props) => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          activeOpacity={0.5}
-          onPress={() => props.navigation.navigate("ProfilePicName")}
-        >
+        <TouchableOpacity onPress={changeEyeIconHandler} activeOpacity={1}>
+          <View style={styles.inputContainer}>
+            <Feather style={styles.icon} name="lock" size={18} color="black" />
+            <InputText
+              autoCapitalize="none"
+              keyboardType="default"
+              placeholder="Confirm Password"
+              secureTextEntry={changeEyeIcon ? false : true}
+              autoCorrect={false}
+              onChangeText={confirmPasswordHandler}
+            />
+
+            <View style={styles.iconContainer}>
+              <Entypo
+                style={styles.eyeIcon}
+                name={changeEyeIcon ? "eye" : "eye-with-line"}
+                size={20}
+                color="black"
+              />
+            </View>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity activeOpacity={0.5} onPress={handleContinue}>
           <MainButton style={styles.signUpButton}>Sign Up</MainButton>
         </TouchableOpacity>
       </View>

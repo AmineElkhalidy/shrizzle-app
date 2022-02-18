@@ -8,7 +8,6 @@ import SocialMedia from "../components/SocialMedia.js";
 import NormalContacts from "../components/NormalContacts.js";
 import profilepic from "./../Assets/TestPictures/testpdp.jpg";
 import coverpic from "./../Assets/TestPictures/testLogo.jpg";
-
 export default function MyProfile() {
   return (
     <ScrollView>

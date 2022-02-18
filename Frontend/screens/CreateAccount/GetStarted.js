@@ -19,7 +19,7 @@ function GetStarted(props) {
     >
       <View style={styles.container}>
         <Text style={styles.hi}>Hi,</Text>
-        <Text style={styles.info}>We need some informations about you </Text>
+        <Text style={styles.info}>We need some information about you </Text>
         <Text style={styles.info}>to setup your profile</Text>
 
         <View style={styles.imageContainer}>
@@ -27,12 +27,11 @@ function GetStarted(props) {
             source={require("../../Assets/TestPictures/welcome_img.png")}
           ></Image>
         </View>
-        <TouchableOpacity
-          activeOpacity={0.8}
+
+        <DefaultButton
+          text={"Let's get started"}
           onPress={() => props.navigation.navigate("ProfilePicName")}
-        >
-          <DefaultButton text={"Let's get started"} />
-        </TouchableOpacity>
+        />
       </View>
     </ImageBackground>
   );
