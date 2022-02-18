@@ -15,7 +15,7 @@ import SocialButton from "../../components/SocialButton";
 import { MODALS_INFO } from "../../constants/SocialHandlesModal";
 
 function GetSocialHandles(props) {
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentHandler, setCurrentHandler] = useState({});
 
   return (
@@ -31,7 +31,6 @@ function GetSocialHandles(props) {
             <SocialButton
               key={handle.title}
               handle={handle}
-              isSet={false}
               onPress={() => {
                 setIsModalOpen(true);
                 setCurrentHandler(handle);

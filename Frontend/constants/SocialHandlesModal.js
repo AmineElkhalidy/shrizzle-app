@@ -42,4 +42,9 @@ export const MODALS_INFO = [
     inputPlaceholder: "Please enter your LinkedIn profile",
     icon: require("../Assets/SocialMediaIcons/LinkedIn.png"),
   },
+  {
+    title: "Tiktok Profile",
+    inputPlaceholder: "Please enter your LinkedIn profile",
+    icon: require("../Assets/SocialMediaIcons/Tiktok.png"),
+  },
 ];

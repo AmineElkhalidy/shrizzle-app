@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   TouchableOpacity,
@@ -14,8 +14,49 @@ import SkipButton from "../Buttons/SkipButton";
 import DefaultButton from "../Buttons/DefaultButton";
 import DefaultInput from "../InputText/DefaultInput";
 import Colors from "../../constants/Colors";
+import { useCreateUserContext } from "../../contexts/CreateUserContext";
 
 function SocialHandleModal({ handler, setIsModalOpen }) {
+  const [inputText, setInputText] = useState("");
+  const {
+    setPhone,
+    setEmail,
+    setFacebook,
+    setTwitter,
+    setInstagram,
+    setSnapshat,
+    setDiscord,
+    setTiktok,
+  } = useCreateUserContext();
+
+  const setHandler = (handlerName) => {
+    switch (handlerName) {
+      case "Phone Number":
+        setPhone(inputText);
+        return;
+      case "Email Address":
+        setEmail(inputText);
+        return;
+      case "Facebook Profile":
+        setFacebook(inputText);
+        return;
+      case "Twitter Profile":
+        setTwitter(inputText);
+        return;
+      case "Instagram Profile":
+        setInstagram(inputText);
+        return;
+      case "Snapchat Profile":
+        setSnapshat(inputText);
+        return;
+      case "Instagram Profile":
+        setDiscord(inputText);
+        return;
+      case "Tiktok Profile":
+        setTiktok(inputText);
+        return;
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.modalContainer}>
@@ -25,10 +66,16 @@ function SocialHandleModal({ handler, setIsModalOpen }) {
             <TextInput
               style={styles.input}
               placeholder={handler.inputPlaceholder}
+              onChangeText={(text) => setInputText(text)}
             />
           </View>
         </View>
-        <TouchableOpacity onPress={() => setIsModalOpen(false)}>
+        <TouchableOpacity
+          onPress={() => {
+            setHandler(handler.title);
+            setIsModalOpen(false);
+          }}
+        >
           <View style={styles.button}>
             <Text style={styles.buttonText}>Confirm</Text>
           </View>
