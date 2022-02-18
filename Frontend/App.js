@@ -18,7 +18,7 @@ import Signup from "./screens/Signup/Signup.js";
 import GetUserLocation from "./screens/CreateAccount/GetUserLocation.js";
 import ProfilePicName from "./screens/CreateAccount/ProfilePicName.js";
 import UserBio from "./screens/CreateAccount/UserBio.js";
-
+import GetSocialHandles from "./screens/CreateAccount/GetSocialHandles.js";
 import Onboarding from "./screens/Onboarding/Onboarding.js";
 import SettingsScreen from "./screens/Settings/SettingsScreen.js";
 import BusinessProfile from "./screens/Settings/Profile/BusinessProfile.js";
@@ -91,7 +91,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {showSplash && <Stack.Screen name="Splash" component={SplashScreen} />}
-        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Login" component={GetSocialHandles} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="GetStarted" component={GetStarted} />
         <Stack.Screen name="ProfilePicName" component={ProfilePicName} />
