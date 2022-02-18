@@ -5,31 +5,29 @@ import Contact from "./screens/Contact.js";
 import { SafeAreaView } from "react-native";
 import * as Fonts from "expo-font";
 import AppLoading from "expo-app-loading";
-import NavBar from "./components/Navbar/NavBar.js";
+import NavBar from "./components/Navbar/NavBar";
 
 //pages
-import SplashScreen from "./screens/Splash/SplashScreen.js";
+import SplashScreen from "./screens/Splash/SplashScreen";
 
-import GetStarted from "./screens/CreateAccount/GetStarted.js";
-import LoginScreen from "./screens/Login/LoginScreen.js";
-import Signup from "./screens/Signup/Signup.js";
+import GetStarted from "./screens/CreateAccount/GetStarted";
+import LoginScreen from "./screens/Login/LoginScreen";
+import Signup from "./screens/Signup/Signup";
 
 //creating account pages
-import GetUserLocation from "./screens/CreateAccount/GetUserLocation.js";
-import ProfilePicName from "./screens/CreateAccount/ProfilePicName.js";
-import UserBio from "./screens/CreateAccount/UserBio.js";
-import GetSocialHandles from "./screens/CreateAccount/GetSocialHandles.js";
-import Onboarding from "./screens/Onboarding/Onboarding.js";
-import SettingsScreen from "./screens/Settings/SettingsScreen.js";
-import BusinessProfile from "./screens/Settings/Profile/BusinessProfile.js";
+import GetUserLocation from "./screens/CreateAccount/GetUserLocation";
+import ProfilePicName from "./screens/CreateAccount/ProfilePicName";
+import UserBio from "./screens/CreateAccount/UserBio";
+import GetSocialHandles from "./screens/CreateAccount/GetSocialHandles";
+import AccountCreated from "./screens/CreateAccount/AccountCreated";
 
 //routing
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 //contexts
-import CreateUserProvider from "./contexts/CreateUserContext"
-
+import CreateUserProvider from "./contexts/CreateUserContext";
+import AuthProvider from "./contexts/AuthContext";
 
 const Stack = createNativeStackNavigator();
 
@@ -43,23 +41,12 @@ const fetchFonts = () => {
 
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
-  const [switchTo, setSwitchTo] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowSplash(false), 2000);
     return () => clearTimeout(timer);
   }, []);
-
-  const switchToHandler = () => {
-    setSwitchTo((prevState) => !prevState);
-  };
-
-  let currentlyLoaded = <LoginScreen onClick={switchToHandler} />;
-
-  if (switchTo) {
-    currentlyLoaded = <Signup onClick={switchToHandler} />;
-  }
 
   if (!fontLoaded) {
     return (
@@ -71,39 +58,27 @@ export default function App() {
     );
   }
 
-  // if(showSplash)
-  // {
-  //   return <SplashScreen />;
-  // }else
-  // {
-  //   return currentlyLoaded;
-  // }
-
   return (
-    // <SafeAreaView style={GlobalStyles.droidSafeArea}>
-    //   {/* <BusinessProfile /> */}
-    //   {/* {currentlyLoaded} */}
-    //   {/* <Contact />
-    //   <NavBar /> */}
-    //   {/* <ProfilePicName />  */}
-    //   {/* <UserBio /> */}
-    //   {/* <SplashScreen /> */}
-    //   {/* <Onboarding /> */}
-    //   {/* <SettingsScreen /> */}
-    // </SafeAreaView>
-
-   <CreateUserProvider>
-      <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {showSplash && <Stack.Screen name="Splash" component={SplashScreen} />}
-        <Stack.Screen name="Login" component={GetSocialHandles} />
-        <Stack.Screen name="Signup" component={Signup} />
-        <Stack.Screen name="GetStarted" component={GetStarted} />
-        <Stack.Screen name="ProfilePicName" component={ProfilePicName} />
-        <Stack.Screen name="GetUserLocation" component={GetUserLocation} />
-        <Stack.Screen name="UserBio" component={UserBio} />
-      </Stack.Navigator>
-    </NavigationContainer>
-     </CreateUserProvider>
+    <AuthProvider>
+      <CreateUserProvider>
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            {showSplash && (
+              <Stack.Screen name="Splash" component={SplashScreen} />
+            )}
+            <Stack.Screen name="Login" component={AccountCreated} />
+            <Stack.Screen name="Signup" component={Signup} />
+            <Stack.Screen name="GetStarted" component={GetStarted} />
+            <Stack.Screen name="ProfilePicName" component={ProfilePicName} />
+            <Stack.Screen name="GetUserLocation" component={GetUserLocation} />
+            <Stack.Screen name="UserBio" component={UserBio} />
+            <Stack.Screen
+              name="GetSocialHandles"
+              component={GetSocialHandles}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </CreateUserProvider>
+    </AuthProvider>
   );
 }

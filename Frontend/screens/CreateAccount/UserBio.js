@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Dimensions,
   StyleSheet,
@@ -6,8 +6,6 @@ import {
   Text,
   ImageBackground,
   TextInput,
-  KeyboardAvoidingView,
-  TouchableOpacity,
 } from "react-native";
 
 //colors
@@ -20,8 +18,18 @@ import SkipButton from "../../components/Buttons/SkipButton";
 //contexts
 import { useCreateUserContext } from "../../contexts/CreateUserContext";
 
-function UserBio() {
+function UserBio(props) {
+  const [bioInput, setBioInput] = useState("");
   const { setBio } = useCreateUserContext();
+
+  const bioHandler = (text) => {
+    setBioInput(text);
+  };
+
+  const onPressHandler = () => {
+    setBio(bioInput);
+    props.navigation.navigate("GetSocialHandles");
+  };
 
   return (
     <View style={styles.screen}>
@@ -40,18 +48,14 @@ function UserBio() {
                 multiline={true}
                 numberOfLines={15}
                 placeholder="Please enter your bio..."
-                onChangeText={(bioInput) => setBio(bioInput)}
+                onChangeText={bioHandler}
                 textAlign="left"
               />
             </View>
           </View>
-          <TouchableOpacity activeOpacity={0.8} onPress={""}>
-            <DefaultButton text="Continue" />
-          </TouchableOpacity>
+          <DefaultButton text="Continue" onPress={onPressHandler} />
 
-          <TouchableOpacity>
-            <SkipButton color="#fff" />
-          </TouchableOpacity>
+          <SkipButton color="#fff" />
         </View>
       </ImageBackground>
     </View>
@@ -62,12 +66,12 @@ export default UserBio;
 
 const styles = StyleSheet.create({
   screen: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
   },
   imageBackground: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
   container: {
     paddingVertical: 10,
