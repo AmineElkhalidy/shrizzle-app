@@ -5,9 +5,10 @@ import {
   View,
   Text,
   ImageBackground,
-  Image,
-  TouchableOpacity,
+  Dimensions,
 } from "react-native";
+
+import WelcomeImg from "../../Assets/TestPictures/welcome_img.svg";
 
 import DefaultButton from "../../components/Buttons/DefaultButton";
 
@@ -18,14 +19,12 @@ function GetStarted(props) {
       style={styles.screen}
     >
       <View style={styles.container}>
-        <Text style={styles.hi}>Hi,</Text>
+        <Text style={styles.hi}>Hi {props.route.params.firstName},</Text>
         <Text style={styles.info}>We need some information about you </Text>
         <Text style={styles.info}>to setup your profile</Text>
 
         <View style={styles.imageContainer}>
-          <Image
-            source={require("../../Assets/TestPictures/welcome_img.png")}
-          ></Image>
+          <WelcomeImg />
         </View>
 
         <DefaultButton
@@ -62,7 +61,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   imageContainer: {
-    paddingTop: 100,
+    paddingTop: Dimensions.get("window").width * 0.18,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

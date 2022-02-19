@@ -8,10 +8,13 @@ import {
   ImageBackground,
 } from "react-native";
 
+//components
 import DefaultButton from "../../components/Buttons/DefaultButton";
 import SkipButton from "../../components/Buttons/SkipButton";
 import SocialHandleModal from "../../components/Modals/SocialHandleModal";
 import SocialButton from "../../components/SocialButton";
+
+//constants
 import { MODALS_INFO } from "../../constants/SocialHandlesModal";
 
 function GetSocialHandles(props) {
@@ -39,8 +42,14 @@ function GetSocialHandles(props) {
           ))}
         </View>
 
-        <DefaultButton text="Continue" />
-        <SkipButton color="#000" />
+        <DefaultButton
+          text="Continue"
+          onPress={() => props.navigation.navigate("LoadingAccount")}
+        />
+        <SkipButton
+          color="#000"
+          onPress={() => props.navigation.navigate("LoadingAccount")}
+        />
         {isModalOpen && (
           <SocialHandleModal
             handler={currentHandler}

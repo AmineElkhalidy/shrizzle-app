@@ -21,6 +21,7 @@ function SocialButton({ handle, isSet, onPress }) {
     snapshat,
     discord,
     tiktok,
+    linkedIn,
   } = useCreateUserContext();
 
   //this function checks if the handler is not empty and set by the user
@@ -42,6 +43,8 @@ function SocialButton({ handle, isSet, onPress }) {
         return discord !== "";
       case "Tiktok Profile":
         return tiktok !== "";
+      case "LinkedIn Profile":
+        return linkedIn !== "";
     }
   };
 
