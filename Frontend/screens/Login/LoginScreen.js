@@ -15,8 +15,40 @@ import BodyText from "../../components/Text/BodyText";
 import MainButton from "../../components/UI/MainButton";
 import Colors from "../../constants/Colors";
 import { Entypo } from "@expo/vector-icons";
+import { loginHandler } from "../../helpers/authHelpers/loginHelper";
+import { getUserData } from "../../helpers/userDataHelpers/getUserDataHelper";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 const LoginScreen = (props) => {
+  //text input
+  const [emailInput, setEmailInput] = useState("anas@gmail.com");
+  const [passwordInput, setPasswordInput] = useState("anas");
+
+  const { setUserData } = useAuthContext();
+
+  const login = async () => {
+    try {
+      const result = await loginHandler(emailInput, passwordInput);
+      if (result.status === 200 && result.data.data.login !== null) {
+        //get token
+        const token = result.data.data.login.token;
+
+        //get the user data
+        const getUserResult = await getUserData(token);
+
+        if (
+          getUserResult.status === 200 &&
+          getUserResult.data.data.getUserData !== null
+        ) {
+          setUserData(getUserResult.data.data.getUserData);
+          props.navigation.navigate("MyProfile");
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   // the state of changing the eye icon
   const [ChangeEyeIcon, setChangeEyeIcon] = useState(false);
 
@@ -66,6 +98,7 @@ const LoginScreen = (props) => {
                 keyboardType="email-address"
                 placeholder="Email address"
                 autoCorrect={false}
+                onChangeText={(text) => setEmailInput(text)}
               />
             </View>
 
@@ -83,6 +116,7 @@ const LoginScreen = (props) => {
                   autoCorrect={false}
                   secureTextEntry={!ChangeEyeIcon ? true : false}
                   style={styles.passwordInput}
+                  onChangeText={(text) => setPasswordInput(text)}
                 />
 
                 <View style={styles.iconContainer}>
@@ -107,7 +141,7 @@ const LoginScreen = (props) => {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={login}>
               <MainButton style={styles.loginButton}>Login</MainButton>
             </TouchableOpacity>
           </View>

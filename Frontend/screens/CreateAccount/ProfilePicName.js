@@ -5,7 +5,6 @@ import Avatar from "../../Assets/TestPictures/avatar.svg";
 import CameraIcon from "../../Assets/TestPictures/camera_icon.svg";
 import Logo from "../../Assets/TestPictures/Logo_full.svg";
 
-
 //image picker
 import {
   StyleSheet,
@@ -30,12 +29,12 @@ import { firebaseStorage } from "../../firebase/index";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 
 //contexts
-import { useCreateUserContext} from "../../contexts/CreateUserContext"
+import { useCreateUserContext } from "../../contexts/CreateUserContext";
 
 function ProfilePicName(props) {
   const [progress, setProgress] = useState(0);
   const [image, setImage] = useState(null);
-  const {setUrl} = useCreateUserContext();
+  const { setUrl } = useCreateUserContext();
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -55,11 +54,10 @@ function ProfilePicName(props) {
   const uploadFiles = async (image) => {
     try {
       const storageRef = ref(firebaseStorage, `images/${uuid.v4()}`);
-      console.log(storageRef);
+
       //convert image to array of bytes
       const img = await fetch(image.uri);
       const bytes = await img.blob();
-      console.log(bytes);
 
       const uploadTask = uploadBytesResumable(storageRef, bytes);
 
@@ -67,9 +65,9 @@ function ProfilePicName(props) {
         "state_changed",
         (snapshot) => {
           const prog = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        setProgress(prog);
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setProgress(prog);
         },
         (error) => console.log(error),
         () => {

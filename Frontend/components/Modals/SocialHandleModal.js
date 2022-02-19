@@ -27,6 +27,7 @@ function SocialHandleModal({ handler, setIsModalOpen }) {
     setSnapshat,
     setDiscord,
     setTiktok,
+    setLinkedIn,
   } = useCreateUserContext();
 
   const setHandler = (handlerName) => {
@@ -54,6 +55,9 @@ function SocialHandleModal({ handler, setIsModalOpen }) {
         return;
       case "Tiktok Profile":
         setTiktok(inputText);
+        return;
+      case "LinkedIn Profile":
+        setLinkedIn(inputText);
         return;
     }
   };

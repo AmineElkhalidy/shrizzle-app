@@ -16,6 +16,7 @@ function CreateUserProvider({ children }) {
   const [discord, setDiscord] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [tiktok, setTiktok] = useState("");
+  const [linkedIn, setLinkedIn] = useState("");
 
   const values = {
     fullName,
@@ -44,6 +45,8 @@ function CreateUserProvider({ children }) {
     setWhatsapp,
     tiktok,
     setTiktok,
+    linkedIn,
+    setLinkedIn,
   };
 
   return (

@@ -28,6 +28,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 //contexts
 import CreateUserProvider from "./contexts/CreateUserContext";
 import AuthProvider from "./contexts/AuthContext";
+import LoadingAccount from "./screens/CreateAccount/LoadingAccount.js";
+import UserProfile from "./screens/UserProfile/UserProfile.js";
+import BusinessProfile from "./screens/Settings/Profile/BusinessProfile.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -66,7 +69,7 @@ export default function App() {
             {showSplash && (
               <Stack.Screen name="Splash" component={SplashScreen} />
             )}
-            <Stack.Screen name="Login" component={AccountCreated} />
+            <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="Signup" component={Signup} />
             <Stack.Screen name="GetStarted" component={GetStarted} />
             <Stack.Screen name="ProfilePicName" component={ProfilePicName} />
@@ -76,6 +79,9 @@ export default function App() {
               name="GetSocialHandles"
               component={GetSocialHandles}
             />
+            <Stack.Screen name="AccountCreated" component={AccountCreated} />
+            <Stack.Screen name="LoadingAccount" component={LoadingAccount} />
+            <Stack.Screen name="MyProfile" component={UserProfile} />
           </Stack.Navigator>
         </NavigationContainer>
       </CreateUserProvider>

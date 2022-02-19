@@ -19,7 +19,6 @@ import { useAuthContext } from "../../contexts/AuthContext";
 const Signup = (props) => {
   //contexts
   const { setToken } = useAuthContext();
-
   const [changeEyeIcon, setChangeEyeIcon] = useState(false);
 
   const [fullName, setFullName] = useState("");
@@ -64,7 +63,10 @@ const Signup = (props) => {
         return;
       } else {
         if (result.data.data.createUser !== null) {
-          props.navigation.navigate("GetStarted");
+          props.navigation.navigate("GetStarted", {
+            firstName: fullName.split(" ")[0],
+          });
+
           const loginResult = await loginHandler(email, password);
           if (loginResult.status === 200) {
             if (loginResult.data.data.login !== null) {

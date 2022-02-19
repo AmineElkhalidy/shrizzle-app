@@ -46,7 +46,7 @@ function UserBio(props) {
               <TextInput
                 style={styles.input}
                 multiline={true}
-                numberOfLines={15}
+                numberOfLines={12}
                 placeholder="Please enter your bio..."
                 onChangeText={bioHandler}
                 textAlign="left"
@@ -55,7 +55,10 @@ function UserBio(props) {
           </View>
           <DefaultButton text="Continue" onPress={onPressHandler} />
 
-          <SkipButton color="#fff" />
+          <SkipButton
+            color="#fff"
+            onPress={() => props.navigation.navigate("GetSocialHandles")}
+          />
         </View>
       </ImageBackground>
     </View>
@@ -89,7 +92,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: "100%",
-    marginTop: 65,
+    marginTop: Dimensions.get("window").width * 0.015,
   },
   inputTextContainer: {
     width: "97%",

@@ -6,8 +6,10 @@ import DefaultButton from "../../components/Buttons/DefaultButton";
 import Colors from "../../constants/Colors";
 import Avatar from "../../Assets/TestPictures/avatar.png";
 import BodyText from "../../components/Text/BodyText";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 function AccountCreated(props) {
+  const { userData } = useAuthContext();
   return (
     <View style={styles.screen}>
       <View style={styles.textContainer}>
@@ -17,13 +19,16 @@ function AccountCreated(props) {
       </View>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <Image source={Avatar} resizeMode="contain" />
+          <Image
+            source={userData?.personalProfile.profilePic || Avatar}
+            resizeMode="contain"
+          />
         </View>
 
-        <BodyText style={styles.text}>Anas Samoudi</BodyText>
+        <BodyText style={styles.text}>{userData.fullName}</BodyText>
         <DefaultButton
           style={styles.buttonContainer}
-          text="Go To Profile"
+          text="Go To My Profile"
           onPress={""}
         />
       </View>

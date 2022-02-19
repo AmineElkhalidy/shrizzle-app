@@ -19,13 +19,12 @@ export const loginHandler = (email, password) => {
     API_URL,
     {
       query: `
-        query{
-            login(email:"${email}",password:"${password}"){
-              userId
-              token
-              tokenExpiration
-            }
-        }`,
+      query{
+        login(email:"anas@gmail.com",password:"anas"){
+            userId
+            token
+        }
+    }`,
     },
     {
       headers: {

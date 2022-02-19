@@ -15,6 +15,7 @@ export const editUserProfile = (
   businessProfile,
   phoneNumber,
   bio,
+  facebook,
   twitter,
   discord,
   address,
@@ -24,6 +25,7 @@ export const editUserProfile = (
   whatsapp,
   instagram,
   customLink,
+  tiktok,
   token
 ) => {
   return axios.post(
@@ -31,8 +33,8 @@ export const editUserProfile = (
     {
       query: `mutation {
       updateProfile(profileInfoInput: {personalProfile: ${personalProfile}, businessProfile: ${businessProfile}, phoneNumber: "${phoneNumber}", 
-                    bio: "${bio}", twitter: "${twitter}", discord: "${discord}", address: "${address}",linkedIn: "${linkedIn}", profilePic: "${profilePic}", 
-                    snapshat: "${snapshat}",  instagram: "${instagram}",whatsapp:"${whatsapp}", customLink: ${customLink}}) {
+                    bio: "${bio}",facebook:"${facebook}", twitter: "${twitter}", discord: "${discord}", address: "${address}",linkedIn: "${linkedIn}", profilePic: "${profilePic}", 
+                    snapshat: "${snapshat}",  instagram: "${instagram}",whatsapp:"${whatsapp}", customLink: ${customLink}},tiktok:"${tiktok}") {
         personalProfile {
           phoneNumber
         }
