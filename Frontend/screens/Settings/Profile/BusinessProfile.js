@@ -101,17 +101,13 @@ const BusinessProfile = () => {
 
           <View style={styles.option}>
             <IconContainer>
-            <FontAwesome name="facebook-f" size={18} color={Colors.orange} />
+              <FontAwesome name="facebook-f" size={18} color={Colors.orange} />
             </IconContainer>
 
             <View style={styles.optionContainer}>
               <View>
-                <BodyText style={styles.optionTextOne}>
-                  Facebook Page
-                </BodyText>
-                <BodyText style={styles.optionTextTwo}>
-                  @facebookPage
-                </BodyText>
+                <BodyText style={styles.optionTextOne}>Facebook Page</BodyText>
+                <BodyText style={styles.optionTextTwo}>@facebookPage</BodyText>
               </View>
 
               <IconContainer style={styles.iconContainer}>
@@ -122,7 +118,7 @@ const BusinessProfile = () => {
 
           <View style={styles.option}>
             <IconContainer>
-            <FontAwesome name="twitter" size={18} color={Colors.orange} />
+              <FontAwesome name="twitter" size={18} color={Colors.orange} />
             </IconContainer>
 
             <View style={styles.optionContainer}>
