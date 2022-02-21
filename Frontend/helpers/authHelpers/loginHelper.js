@@ -20,7 +20,7 @@ export const loginHandler = (email, password) => {
     {
       query: `
       query{
-        login(email:"anas@gmail.com",password:"anas"){
+        login(email:"${email}",password:"${password}"){
             userId
             token
         }

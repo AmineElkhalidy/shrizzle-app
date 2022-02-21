@@ -1,16 +1,15 @@
+import axios from "axios";
 import React, { useEffect } from "react";
 import { ActivityIndicator, Text, StyleSheet, View } from "react-native";
+import { API_URL } from "../../constants/api";
 import Colors from "../../constants/Colors";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useCreateUserContext } from "../../contexts/CreateUserContext";
+import { editProfileHelper } from "../../helpers/userDataHelpers/editProfileHelper";
 import { editUserProfile } from "../../helpers/userDataHelpers/editUserProfileHelper";
 import { getUserData } from "../../helpers/userDataHelpers/getUserDataHelper";
 
 const LoadingAccount = (props) => {
-  useEffect(() => {
-    handleSignUp();
-  }, []);
-
   const { token, setUserData } = useAuthContext();
 
   const {
@@ -29,30 +28,35 @@ const LoadingAccount = (props) => {
     linkedIn,
   } = useCreateUserContext();
 
+  useEffect(() => {
+    handleSignUp();
+  }, []);
+
   const handleSignUp = async () => {
     try {
-      const result = await editUserProfile(
-        true,
-        false,
-        phone,
-        bio,
-        facebook,
-        twitter,
-        discord,
-        "",
-        linkedIn,
-        url,
-        snapshat,
-        instagram,
-        whatsapp,
-        website,
-        tiktok,
-        token
+      const result = await axios.post(
+        API_URL,
+        {
+          query: `mutation {updateProfile(profileInfoInput: {personalProfile: true,businessProfile: false, 
+            phoneNumber: "${phone}",bio: "${bio}",facebook:"${facebook}", twitter: "${twitter}", discord: "${discord}", address: "${discord}", linkedIn: "${linkedIn}", profilePic:"${url}",snapshat: "${snapshat}",  instagram:"${instagram}", whatsapp:"${whatsapp}", customLink: "${website}", tiktok:"${tiktok}"}) 
+            {
+            fullName
+            personalProfile {
+              bio
+                          profilePic                   
+            }                
+          }   
+          }`,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+        }
       );
-      console.log(result.data.data.updateProfile);
       if (result.status === 200 && result.data.data.updateProfile !== null) {
         const getUserResult = await getUserData(token);
-        console.log(getUserResult.data.data.getUserData);
         if (
           getUserResult.status === 200 &&
           getUserResult.data.data.getUserData !== null
