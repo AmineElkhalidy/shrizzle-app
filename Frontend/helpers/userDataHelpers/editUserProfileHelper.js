@@ -31,15 +31,6 @@ export const editUserProfile = (
   return axios.post(
     API_URL,
     {
-<<<<<<< HEAD
-      query: `mutation {
-      updateProfile(profileInfoInput: {personalProfile: ${personalProfile}, businessProfile: ${businessProfile}, phoneNumber: "${phoneNumber}", 
-                    bio: "${bio}",facebook:"${facebook}", twitter: "${twitter}", discord: "${discord}", address: "${address}", linkedIn: "${linkedIn}", profilePic: "${profilePic}", 
-                    snapshat: "${snapshat}",  instagram: "${instagram}", whatsapp:"${whatsapp}", customLink: "${customLink}", tiktok:"${tiktok}"}) {
-                     fullName
-                    }
-    }
-=======
       query: `mutation {updateProfile(profileInfoInput: {personalProfile: ${personalProfile},businessProfile: ${businessProfile}, 
         phoneNumber: "${phoneNumber}",bio: "${bio}",facebook:"${facebook}", twitter: "${twitter}", discord: "${discord}", address: "${address}", linkedIn: "${linkedIn}", profilePic:"${profilePic}",snapshat: "${snapshat}",  instagram:"${instagram}", whatsapp:"${whatsapp}", customLink: "${customLink}", tiktok:"${tiktok}"}) 
         {
@@ -49,7 +40,6 @@ export const editUserProfile = (
         }                
       }   
       }
->>>>>>> bed5cba294bdf1b3f5fdafad3fdaf952096a2970
     `,
     },
     {

@@ -153,12 +153,13 @@ const LoginScreen = (props) => {
 
 const styles = StyleSheet.create({
   screen: {
-    width: "100%",
-    height: "100%",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
     position: "relative",
   },
   topPart: {
-    height: Dimensions.get("window").height / 1.9,
+    height: Dimensions.get("window").height / 1.8,
+    alignItems: "center",
   },
   circle: {
     height: "100%",
@@ -167,21 +168,22 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 175,
     backgroundColor: Colors.blue,
     position: "absolute",
-    top: -180,
+    top: -165,
   },
   textContainer: {
     width: "100%",
     height: "100%",
     alignItems: "center",
-    marginVertical: 50,
+    marginVertical: 60,
   },
   title: {
     fontFamily: "Poppins-Bold",
-    fontSize: 20,
+    fontSize: 18,
+    marginBottom: 0,
   },
   subtitle: {
     fontFamily: "Poppins-Medium",
-    fontSize: 15,
+    fontSize: 14,
   },
   buttonContainer: {
     marginTop: 10,
