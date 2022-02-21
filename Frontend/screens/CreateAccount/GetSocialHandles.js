@@ -78,15 +78,15 @@ const styles = StyleSheet.create({
     width: WIDTH,
     height: HEIGHT,
     position: "relative",
-    marginTop: 28,
+    marginTop: HEIGHT * 0.04,
   },
   container: {
-    padding: WIDTH * 0.25,
+    padding: WIDTH * 0.15,
     paddingHorizontal: WIDTH * 0.05,
     position: "relative",
   },
   title: {
-    marginBottom: WIDTH * 0.25,
+    marginBottom: WIDTH * 0.35,
     color: "white",
     fontSize: WIDTH * 0.12,
     fontFamily: "Poppins-Bold",

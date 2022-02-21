@@ -19,6 +19,9 @@ import { loginHandler } from "../../helpers/authHelpers/loginHelper";
 import { getUserData } from "../../helpers/userDataHelpers/getUserDataHelper";
 import { useAuthContext } from "../../contexts/AuthContext";
 
+const WIDTH = Dimensions.get("window").width;
+const HEIGHT = Dimensions.get("window").height;
+
 const LoginScreen = (props) => {
   //text input
   const [emailInput, setEmailInput] = useState("");
@@ -153,12 +156,12 @@ const LoginScreen = (props) => {
 
 const styles = StyleSheet.create({
   screen: {
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
+    width: WIDTH,
+    height: HEIGHT,
     position: "relative",
   },
   topPart: {
-    height: Dimensions.get("window").height / 1.8,
+    height: HEIGHT / 1.8,
     alignItems: "center",
   },
   circle: {
@@ -205,7 +208,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   inputContainer: {
-    width: Dimensions.get("window").width / 1.3,
+    width: WIDTH / 1.3,
     height: 40,
     borderColor: Colors.blue,
     borderWidth: 1,
@@ -245,6 +248,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.blue,
     width: 125,
     height: 35,
+    // width: WIDTH / 2.8,
+    // height: HEIGHT / 20,
     borderRadius: 25,
     marginVertical: 10,
   },

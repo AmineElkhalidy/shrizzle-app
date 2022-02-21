@@ -33,6 +33,9 @@ import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { useCreateUserContext } from "../../contexts/CreateUserContext";
 import Colors from "../../constants/Colors";
 
+const WIDTH = Dimensions.get("window").width;
+const HEIGHT = Dimensions.get("window").height;
+
 function ProfilePicName(props) {
   const [progress, setProgress] = useState(0);
   const [image, setImage] = useState(null);
@@ -120,26 +123,25 @@ export default ProfilePicName;
 
 const styles = StyleSheet.create({
   screen: {
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
+    width: WIDTH,
+    height: HEIGHT,
     position: "relative",
-    padding: 0,
   },
   container: {
-    padding: 25,
+    padding: HEIGHT * 0.025,
     position: "relative",
     justifyContent: "center",
   },
   title: {
-    paddingTop: 40,
-    marginBottom: 40,
+    paddingTop: HEIGHT * 0.04,
+    marginBottom: HEIGHT * 0.08,
     color: Colors.blue,
     fontSize: 50,
     fontFamily: "Poppins-Bold",
   },
   avatarContainer: {
     width: "100%",
-    marginBottom: 25,
+    marginBottom: HEIGHT * 0.02,
     position: "relative",
     justifyContent: "center",
     alignItems: "center",
@@ -155,6 +157,6 @@ const styles = StyleSheet.create({
   logoContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 50,
+    marginTop: HEIGHT * 0.05,
   },
 });

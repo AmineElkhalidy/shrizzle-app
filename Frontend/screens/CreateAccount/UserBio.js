@@ -80,20 +80,20 @@ const styles = StyleSheet.create({
   imageBackground: {
     width: "100%",
     height: "100%",
-    marginTop: 28,
+    marginTop: HEIGHT * 0.045,
   },
   container: {
-    paddingVertical: 10,
-    paddingHorizontal: 30,
+    paddingVertical: HEIGHT * 0.0001,
+    paddingHorizontal: WIDTH * 0.06,
     position: "relative",
-    marginTop: 20,
+    marginTop: HEIGHT * 0.002,
   },
 
   title: {
-    paddingTop: 30,
-    marginBottom: 60,
+    paddingTop: HEIGHT * 0.02,
+    marginBottom: HEIGHT * 0.15,
     color: "#00285c",
-    fontSize: 46,
+    fontSize: WIDTH * 0.12,
     fontFamily: "Poppins-Bold",
   },
   inputContainer: {
@@ -115,6 +115,6 @@ const styles = StyleSheet.create({
     textAlignVertical: "top",
     fontFamily: "Poppins-Medium",
     fontSize: 16,
-    padding: 15,
+    padding: HEIGHT * 0.025,
   },
 });
