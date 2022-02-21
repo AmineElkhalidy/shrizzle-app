@@ -12,6 +12,8 @@ import WelcomeImg from "../../Assets/TestPictures/welcome_img.svg";
 
 import DefaultButton from "../../components/Buttons/DefaultButton";
 
+const WIDTH = Dimensions.get("window").width;
+
 function GetStarted(props) {
   return (
     <ImageBackground
@@ -46,22 +48,22 @@ const styles = StyleSheet.create({
     padding: 0,
   },
   container: {
-    padding: 20,
+    padding: WIDTH * 0.05,
     position: "relative",
   },
   hi: {
-    paddingTop: 60,
-    marginBottom: 10,
+    paddingTop: WIDTH * 0.18,
+    marginBottom: WIDTH * 0.02,
     color: "#00285c",
-    fontSize: 50,
+    fontSize: WIDTH * 0.12,
     fontWeight: "bold",
   },
   info: {
     color: "white",
-    fontSize: 15,
+    fontSize: WIDTH * 0.05,
   },
   imageContainer: {
-    paddingTop: Dimensions.get("window").width * 0.18,
+    paddingTop: WIDTH * 0.15,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
