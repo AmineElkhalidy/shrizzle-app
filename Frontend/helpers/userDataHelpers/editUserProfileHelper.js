@@ -33,12 +33,10 @@ export const editUserProfile = (
     {
       query: `mutation {
       updateProfile(profileInfoInput: {personalProfile: ${personalProfile}, businessProfile: ${businessProfile}, phoneNumber: "${phoneNumber}", 
-                    bio: "${bio}",facebook:"${facebook}", twitter: "${twitter}", discord: "${discord}", address: "${address}",linkedIn: "${linkedIn}", profilePic: "${profilePic}", 
-                    snapshat: "${snapshat}",  instagram: "${instagram}",whatsapp:"${whatsapp}", customLink: ${customLink}},tiktok:"${tiktok}") {
-        personalProfile {
-          phoneNumber
-        }
-      }
+                    bio: "${bio}",facebook:"${facebook}", twitter: "${twitter}", discord: "${discord}", address: "${address}", linkedIn: "${linkedIn}", profilePic: "${profilePic}", 
+                    snapshat: "${snapshat}",  instagram: "${instagram}", whatsapp:"${whatsapp}", customLink: "${customLink}", tiktok:"${tiktok}"}) {
+                     fullName
+                    }
     }
     `,
     },

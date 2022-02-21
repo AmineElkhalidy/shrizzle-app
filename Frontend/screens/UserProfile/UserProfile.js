@@ -24,8 +24,7 @@ function UserProfile(props) {
   const { userData } = useAuthContext();
   console.log(userData);
   let Image_Http_URL = {
-    uri:
-      "https://firebasestorage.googleapis.com/v0/b/shrizzle-82093.appspot.com/o/images%2Fcover.jpg?alt=media&token=f3d9770c-1612-45ac-bfaa-95f06c1e46d3",
+    uri: "https://firebasestorage.googleapis.com/v0/b/shrizzle-82093.appspot.com/o/images%2Fcover.jpg?alt=media&token=f3d9770c-1612-45ac-bfaa-95f06c1e46d3",
   };
   return (
     <View style={styles.screen}>
@@ -44,7 +43,7 @@ function UserProfile(props) {
             </View>
 
             {/* ===== Profile NAME ===== */}
-            <Text style={styles.profileName}>Anas Samoudi</Text>
+            <Text style={styles.profileName}>{userData.fullName}</Text>
           </View>
 
           {/* ===== Profile INFO ===== */}
@@ -57,7 +56,9 @@ function UserProfile(props) {
 
           <ScrollView>
             <Text style={styles.title}>Social Media</Text>
-            <View style={styles.socialsContainer}></View>
+            <View style={styles.socialsContainer}>
+              {/* ===== Profile Social Media Icons ===== */}
+            </View>
           </ScrollView>
         </View>
       </View>

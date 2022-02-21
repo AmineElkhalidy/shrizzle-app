@@ -43,17 +43,16 @@ const LoadingAccount = (props) => {
         linkedIn,
         url,
         snapshat,
-        whatsapp,
         instagram,
+        whatsapp,
         website,
-        email,
         tiktok,
         token
       );
-
+      console.log(result.data.data.updateProfile);
       if (result.status === 200 && result.data.data.updateProfile !== null) {
         const getUserResult = await getUserData(token);
-        console.log(getUserResult);
+        console.log(getUserResult.data.data.getUserData);
         if (
           getUserResult.status === 200 &&
           getUserResult.data.data.getUserData !== null
@@ -63,7 +62,7 @@ const LoadingAccount = (props) => {
         }
       }
     } catch (err) {
-      console.log(err);
+      console.log(err.response);
     }
   };
 
@@ -86,7 +85,9 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white",
-    marginTop: 10,
+    marginTop: 15,
+    fontFamily: "Poppins",
+    fontSize: 15,
   },
 });
 

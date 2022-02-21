@@ -64,45 +64,43 @@ export const getUserData = (token) => {
     API_URL,
     {
       query: `query{
-      getUserData{
-        _id
-        fullName
-        email
-        address
-        plan{
-          name
+        getUserData {
+          _id
+          fullName
+          email
+          address
+          plan {
+            name
+          }
+          personalProfile {
+            bio
+            tinder
+            twitter
+            discord
+            facebook
+            linkedIn
+            snapshat
+            whatsapp
+            instagram
+            profilePic
+            customLink
+            phoneNumber
+          }
+          businessProfile {
+            bio
+            tinder
+            twitter
+            discord
+            facebook
+            linkedIn
+            snapshat
+            whatsapp
+            instagram
+            profilePic
+            customLink
+            phoneNumber
+          }
         }
-        personalProfile{
-          bio
-          tinder
-          twitter
-          discord
-          facebook
-          linkedIn
-          snapshat
-          whatsapp
-          instagram
-          profilePic
-          customLink
-          phoneNumber
-          
-        }
-        businessProfile{
-          bio
-          tinder
-          twitter
-          discord
-          facebook
-          linkedIn
-          snapshat
-          whatsapp
-          instagram
-          profilePic
-          customLink
-          phoneNumber
-          
-        }
-      }
       }`,
     },
     {
