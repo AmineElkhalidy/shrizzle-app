@@ -10,7 +10,7 @@ import { API_URL } from "../../constants/api";
  * @returns {Object} User with this structure
  * 
  * 
- *      _id
+ * _id
         fullName
         email
         address
@@ -48,51 +48,29 @@ import { API_URL } from "../../constants/api";
           
         }
  * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
  */
 
-export const getUserData = (token) => {
+export const editProfileHelper = (token) => {
   return axios.post(
     API_URL,
     {
-      query: `query{
-      getUserData{
-        _id
+      query: `mutation {updateProfile(profileInfoInput: {personalProfile: true,businessProfile: false, 
+        phoneNumber: "",bio: "Im a web developer",facebook:"", twitter: "", discord: "", address: "", linkedIn: "", profilePic:"",snapshat: "",  instagram:"", whatsapp:"", customLink: "", tiktok:""}) 
+        {
         fullName
-        email
-        address
-        plan{
-          name
-        }
-        personalProfile{
-          bio
-          tinder
-          twitter
-          discord
-          facebook
-          linkedIn
-          snapshat
-          whatsapp
-          instagram
-          profilePic
-          customLink
-          phoneNumber
-        }
-        businessProfile{
-          bio
-          tinder
-          twitter
-          discord
-          facebook
-          linkedIn
-          snapshat
-          whatsapp
-          instagram
-          profilePic
-          customLink
-          phoneNumber
-          
-        }
-      }
+        personalProfile {
+                      profilePic                   
+        }                
+      }   
       }`,
     },
     {

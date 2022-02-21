@@ -21,10 +21,10 @@ import { useAuthContext } from "../../contexts/AuthContext";
 
 const LoginScreen = (props) => {
   //text input
-  const [emailInput, setEmailInput] = useState("anas@gmail.com");
-  const [passwordInput, setPasswordInput] = useState("anas");
+  const [emailInput, setEmailInput] = useState("");
+  const [passwordInput, setPasswordInput] = useState("");
 
-  const { setUserData } = useAuthContext();
+  const { setUserData, setToken } = useAuthContext();
 
   const login = async () => {
     try {
@@ -32,7 +32,7 @@ const LoginScreen = (props) => {
       if (result.status === 200 && result.data.data.login !== null) {
         //get token
         const token = result.data.data.login.token;
-
+        setToken(result.data.data.login.token);
         //get the user data
         const getUserResult = await getUserData(token);
 
@@ -45,7 +45,7 @@ const LoginScreen = (props) => {
         }
       }
     } catch (err) {
-      console.log(err);
+      console.log(err.response);
     }
   };
 

@@ -10,6 +10,13 @@ import { useAuthContext } from "../../contexts/AuthContext";
 
 function AccountCreated(props) {
   const { userData } = useAuthContext();
+  const getProfilePic = () => {
+    if (userData?.personalProfile.profilePic !== "") {
+      return { uri: userData?.personalProfile.profilePic };
+    } else {
+      return Avatar;
+    }
+  };
   return (
     <View style={styles.screen}>
       <View style={styles.textContainer}>
@@ -19,17 +26,14 @@ function AccountCreated(props) {
       </View>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <Image
-            source={userData?.personalProfile.profilePic || Avatar}
-            resizeMode="contain"
-          />
+          <Image source={getProfilePic()} resizeMode="contain" />
         </View>
 
         <BodyText style={styles.text}>{userData.fullName}</BodyText>
         <DefaultButton
           style={styles.buttonContainer}
           text="Go To My Profile"
-          onPress={""}
+          onPress={props.navigation.navigate("MyProfile")}
         />
       </View>
     </View>
