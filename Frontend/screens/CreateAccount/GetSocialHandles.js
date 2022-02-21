@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import {
   StyleSheet,
   View,
@@ -17,47 +16,54 @@ import SocialButton from "../../components/SocialButton";
 //constants
 import { MODALS_INFO } from "../../constants/SocialHandlesModal";
 
+// Dimensions API Variables
+const WIDTH = Dimensions.get("window").width;
+const HEIGHT = Dimensions.get("window").height;
+
 function GetSocialHandles(props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentHandler, setCurrentHandler] = useState({});
 
   return (
-    <ImageBackground
-      source={require("../../Assets/TestPictures/blackbg.png")}
-      style={styles.screen}
-    >
-      <View style={styles.container}>
-        <Text style={styles.title}>Others handles you can share</Text>
+    <View style={styles.screen}>
+      <ImageBackground
+        source={require("../../Assets/TestPictures/blackbg.png")}
+        style={styles.imageBackground}
+      >
+        <View style={styles.container}>
+          <Text style={styles.title}>Others handles you can share</Text>
 
-        <View style={styles.socialsContainer}>
-          {MODALS_INFO.map((handle) => (
-            <SocialButton
-              key={handle.title}
-              handle={handle}
-              onPress={() => {
-                setIsModalOpen(true);
-                setCurrentHandler(handle);
-              }}
-            />
-          ))}
-        </View>
+          <View style={styles.socialsContainer}>
+            {MODALS_INFO.map((handle) => (
+              <SocialButton
+                key={handle.title}
+                handle={handle}
+                onPress={() => {
+                  setIsModalOpen(true);
+                  setCurrentHandler(handle);
+                }}
+                style={styles.SocialButtonIcon}
+              />
+            ))}
+          </View>
 
-        <DefaultButton
-          text="Continue"
-          onPress={() => props.navigation.navigate("LoadingAccount")}
-        />
-        <SkipButton
-          color="#000"
-          onPress={() => props.navigation.navigate("LoadingAccount")}
-        />
-        {isModalOpen && (
-          <SocialHandleModal
-            handler={currentHandler}
-            setIsModalOpen={setIsModalOpen}
+          <DefaultButton
+            text="Continue"
+            onPress={() => props.navigation.navigate("LoadingAccount")}
           />
-        )}
-      </View>
-    </ImageBackground>
+          <SkipButton
+            color="#000"
+            onPress={() => props.navigation.navigate("LoadingAccount")}
+          />
+          {isModalOpen && (
+            <SocialHandleModal
+              handler={currentHandler}
+              setIsModalOpen={setIsModalOpen}
+            />
+          )}
+        </View>
+      </ImageBackground>
+    </View>
   );
 }
 
@@ -65,29 +71,34 @@ export default GetSocialHandles;
 
 const styles = StyleSheet.create({
   screen: {
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
+    width: WIDTH,
+    height: HEIGHT,
+  },
+  imageBackground: {
+    width: WIDTH,
+    height: HEIGHT,
     position: "relative",
-    padding: 0,
+    marginTop: 28,
   },
   container: {
-    padding: Dimensions.get("window").width * 0.1,
-    paddingHorizontal: Dimensions.get("window").width * 0.05,
+    padding: WIDTH * 0.25,
+    paddingHorizontal: WIDTH * 0.05,
     position: "relative",
   },
-
+  title: {
+    marginBottom: WIDTH * 0.25,
+    color: "white",
+    fontSize: WIDTH * 0.12,
+    fontFamily: "Poppins-Bold",
+  },
   socialsContainer: {
-    display: "flex",
     justifyContent: "center",
     alignContent: "center",
     flexDirection: "row",
     flexWrap: "wrap",
   },
-  title: {
-    paddingTop: Dimensions.get("window").width * 0.07,
-    marginBottom: Dimensions.get("window").width * 0.2,
-    color: "white",
-    fontSize: Dimensions.get("window").width * 0.12,
-    fontWeight: "bold",
+  SocialButtonIcon: {
+    width: WIDTH * 0.3,
+    height: HEIGHT * 0.3,
   },
 });

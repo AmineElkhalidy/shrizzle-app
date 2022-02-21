@@ -10,8 +10,10 @@ import {
 
 import Checkmark from "../Assets/SocialMediaIcons/checkmark.svg";
 import { useCreateUserContext } from "../contexts/CreateUserContext";
+const WIDTH = Dimensions.get("window").width;
+const HEIGHT = Dimensions.get("window").height;
 
-function SocialButton({ handle, isSet, onPress }) {
+function SocialButton({ handle, isSet, onPress, style }) {
   const {
     phone,
     email,
@@ -51,7 +53,7 @@ function SocialButton({ handle, isSet, onPress }) {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.socialButton}>
-        <Image source={handle.icon} style={styles.socialIcon}></Image>
+        <Image source={handle.icon} style={{ ...styles.socialIcon, style }} />
         {isHandlerSet(handle.title) && <Checkmark style={styles.checkmark} />}
       </View>
     </TouchableOpacity>
@@ -63,27 +65,26 @@ export default SocialButton;
 const styles = StyleSheet.create({
   socialButton: {
     //screen dimensions
-    width: Dimensions.get("window").width * 0.18,
-    height: Dimensions.get("window").width * 0.18,
+    width: WIDTH * 0.18,
+    height: WIDTH * 0.18,
 
     //other styling
     backgroundColor: "transparent",
-    display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    margin: Dimensions.get("window").width * 0.035,
+    margin: WIDTH * 0.035,
   },
   socialIcon: {
-    width: Dimensions.get("window").width * 0.2,
-    height: Dimensions.get("window").width * 0.2,
+    width: WIDTH * 0.2,
+    height: WIDTH * 0.2,
     overflow: "hidden",
-    borderRadius: Dimensions.get("window").width * 0.02,
+    borderRadius: WIDTH * 0.2,
   },
 
   checkmark: {
     position: "absolute",
-    top: -Dimensions.get("window").width * 0.03,
-    right: -Dimensions.get("window").width * 0.03,
+    top: -WIDTH * 0.03,
+    right: -WIDTH * 0.03,
   },
   buttonText: {
     color: "white",

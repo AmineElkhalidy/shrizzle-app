@@ -6,6 +6,7 @@ import {
   Text,
   ImageBackground,
   TextInput,
+  KeyboardAvoidingView,
 } from "react-native";
 
 //colors
@@ -17,6 +18,9 @@ import SkipButton from "../../components/Buttons/SkipButton";
 
 //contexts
 import { useCreateUserContext } from "../../contexts/CreateUserContext";
+
+const WIDTH = Dimensions.get("window").width;
+const HEIGHT = Dimensions.get("window").height;
 
 function UserBio(props) {
   const [bioInput, setBioInput] = useState("");
@@ -40,25 +44,26 @@ function UserBio(props) {
       >
         <View style={styles.container}>
           <Text style={styles.title}>Can you tell us a bit about yourself</Text>
-
-          <View style={styles.inputContainer}>
-            <View style={styles.inputTextContainer}>
-              <TextInput
-                style={styles.input}
-                multiline={true}
-                numberOfLines={12}
-                placeholder="Please enter your bio..."
-                onChangeText={bioHandler}
-                textAlign="left"
-              />
+          <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={60}>
+            <View style={styles.inputContainer}>
+              <View style={styles.inputTextContainer}>
+                <TextInput
+                  style={styles.input}
+                  multiline={true}
+                  numberOfLines={12}
+                  placeholder="Please enter your bio..."
+                  onChangeText={bioHandler}
+                  textAlign="left"
+                />
+              </View>
             </View>
-          </View>
-          <DefaultButton text="Continue" onPress={onPressHandler} />
+            <DefaultButton text="Continue" onPress={onPressHandler} />
 
-          <SkipButton
-            color="#fff"
-            onPress={() => props.navigation.navigate("GetSocialHandles")}
-          />
+            <SkipButton
+              color="#fff"
+              onPress={() => props.navigation.navigate("GetSocialHandles")}
+            />
+          </KeyboardAvoidingView>
         </View>
       </ImageBackground>
     </View>
@@ -69,43 +74,47 @@ export default UserBio;
 
 const styles = StyleSheet.create({
   screen: {
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
+    width: WIDTH,
+    height: HEIGHT,
   },
   imageBackground: {
     width: "100%",
     height: "100%",
+    marginTop: 28,
   },
   container: {
     paddingVertical: 10,
     paddingHorizontal: 30,
     position: "relative",
-    marginTop: 10,
+    marginTop: 20,
   },
 
   title: {
     paddingTop: 30,
-    marginBottom: 40,
+    marginBottom: 60,
     color: "#00285c",
-    fontSize: 48,
+    fontSize: 46,
     fontFamily: "Poppins-Bold",
   },
   inputContainer: {
     width: "100%",
-    marginTop: Dimensions.get("window").width * 0.015,
+    marginTop: WIDTH * 0.05,
+    alignItems: "center",
+    justifyContent: "center",
   },
   inputTextContainer: {
-    width: "97%",
+    width: "95%",
     borderColor: Colors.blue,
     backgroundColor: "white",
     borderWidth: 1,
     borderRadius: 25,
+    overflow: "hidden",
   },
   input: {
     width: "100%",
     textAlignVertical: "top",
-    margin: 15,
-    fontFamily: "Poppins",
+    fontFamily: "Poppins-Medium",
     fontSize: 16,
+    padding: 15,
   },
 });

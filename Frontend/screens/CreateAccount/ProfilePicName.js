@@ -13,6 +13,7 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  Dimensions,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 
@@ -30,6 +31,7 @@ import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 
 //contexts
 import { useCreateUserContext } from "../../contexts/CreateUserContext";
+import Colors from "../../constants/Colors";
 
 function ProfilePicName(props) {
   const [progress, setProgress] = useState(0);
@@ -118,29 +120,27 @@ export default ProfilePicName;
 
 const styles = StyleSheet.create({
   screen: {
-    width: "100%",
-    height: "100%",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
     position: "relative",
     padding: 0,
   },
   container: {
-    padding: 20,
+    padding: 25,
     position: "relative",
-    display: "flex",
     justifyContent: "center",
   },
   title: {
-    paddingTop: 30,
+    paddingTop: 40,
     marginBottom: 40,
-    color: "#00285c",
+    color: Colors.blue,
     fontSize: 50,
-    fontWeight: "bold",
+    fontFamily: "Poppins-Bold",
   },
   avatarContainer: {
     width: "100%",
-    marginBottom: 30,
+    marginBottom: 25,
     position: "relative",
-    display: "flex",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -153,9 +153,8 @@ const styles = StyleSheet.create({
     right: 0,
   },
   logoContainer: {
-    display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 40,
+    marginTop: 50,
   },
 });

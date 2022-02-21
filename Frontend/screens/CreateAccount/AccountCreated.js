@@ -8,6 +8,9 @@ import Avatar from "../../Assets/TestPictures/avatar.png";
 import BodyText from "../../components/Text/BodyText";
 import { useAuthContext } from "../../contexts/AuthContext";
 
+const WIDTH = Dimensions.get("window").width;
+const HEIGHT = Dimensions.get("window").height;
+
 function AccountCreated(props) {
   const { userData } = useAuthContext();
   const getProfilePic = () => {
@@ -44,8 +47,8 @@ export default AccountCreated;
 
 const styles = StyleSheet.create({
   screen: {
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
+    width: WIDTH,
+    height: HEIGHT,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -61,7 +64,7 @@ const styles = StyleSheet.create({
   },
   container: {
     width: "90%",
-    height: Dimensions.get("window").height * (1 / 2),
+    height: HEIGHT * (1 / 2),
     justifyContent: "center",
     alignItems: "center",
   },
