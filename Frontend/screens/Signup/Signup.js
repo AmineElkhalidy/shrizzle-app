@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   },
   signUpContainer: {
     height: Dimensions.get("window").height / 2,
-    width: "100%",
+    width: Dimensions.get("window").width,
     alignItems: "center",
     justifyContent: "center",
     marginVertical: 50,
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   inputContainer: {
-    width: 250,
+    width: Dimensions.get("window").width / 1.3,
     height: 40,
     borderColor: Colors.blue,
     borderWidth: 1,
