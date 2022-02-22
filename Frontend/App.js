@@ -79,8 +79,8 @@ export default function App() {
               name="GetSocialHandles"
               component={GetSocialHandles}
             />
-            <Stack.Screen name="AccountCreated" component={AccountCreated} />
             <Stack.Screen name="LoadingAccount" component={LoadingAccount} />
+            <Stack.Screen name="AccountCreated" component={AccountCreated} />
             <Stack.Screen name="MyProfile" component={UserProfile} />
           </Stack.Navigator>
         </NavigationContainer>

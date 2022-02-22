@@ -29,14 +29,18 @@ function AccountCreated(props) {
       </View>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
-          <Image source={getProfilePic()} resizeMode="contain" />
+          <Image
+            source={getProfilePic}
+            style={styles.image}
+            resizeMode="contain"
+          />
         </View>
 
         <BodyText style={styles.text}>{userData.fullName}</BodyText>
         <DefaultButton
           style={styles.buttonContainer}
           text="Go To My Profile"
-          onPress={props.navigation.navigate("MyProfile")}
+          onPress={() => props.navigation.navigate("MyProfile")}
         />
       </View>
     </View>
@@ -57,8 +61,8 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   title: {
-    fontSize: 20,
-    fontFamily: "Poppins-Medium",
+    fontSize: 21,
+    fontFamily: "Poppins-Bold",
     textAlign: "center",
     color: Colors.blue,
   },
@@ -77,10 +81,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginBottom: 10,
   },
+  image: {
+    width: "100%",
+    height: "100%",
+  },
   text: {
     fontSize: 20,
     color: Colors.blue,
     marginBottom: 0,
+    fontFamily: "Poppins-Medium",
   },
   buttonContainer: {
     paddingVertical: 10,

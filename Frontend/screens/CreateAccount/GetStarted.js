@@ -23,8 +23,10 @@ function GetStarted(props) {
       >
         <View style={styles.container}>
           <Text style={styles.hi}>Hi {props.route.params.firstName},</Text>
-          <Text style={styles.info}>We need some information about you </Text>
-          <Text style={styles.info}>to setup your profile</Text>
+          <Text style={styles.info}>
+            We need some information about you, to setup your profile
+          </Text>
+          {/* <Text style={styles.info}>to setup your profile</Text> */}
 
           <View style={styles.imageContainer}>
             <WelcomeImg />

@@ -87,10 +87,9 @@ export default UserProfile;
 
 const styles = StyleSheet.create({
   screen: {
-    width: "100%",
-    height: "100%",
+    width: WIDTH,
+    height: HEIGHT,
     position: "relative",
-    padding: 0,
   },
   cover: {
     width: WIDTH,
@@ -103,7 +102,6 @@ const styles = StyleSheet.create({
 
   profileNameContainer: {
     width: WIDTH,
-    display: "flex",
     flexDirection: "row",
     marginTop: WIDTH * 0.02,
   },
@@ -121,16 +119,18 @@ const styles = StyleSheet.create({
     marginTop: WIDTH * 0.01,
     marginLeft: WIDTH * 0.04,
     fontSize: WIDTH * 0.05,
+    fontFamily: "Poppins",
   },
 
   bio: {
     marginTop: WIDTH * 0.05,
     color: Colors.greyText,
-    fontStyle: "italic",
+    fontFamily: "Poppins",
   },
 
   title: {
     marginTop: WIDTH * 0.03,
     fontSize: WIDTH * 0.05,
+    fontFamily: "Poppins",
   },
 });
