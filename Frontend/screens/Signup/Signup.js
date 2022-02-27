@@ -20,6 +20,7 @@ const Signup = (props) => {
   //contexts
   const { setToken } = useAuthContext();
   const [changeEyeIcon, setChangeEyeIcon] = useState(false);
+  const [changeEyeIconTwo, setChangeEyeIconTwo] = useState(false);
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -28,6 +29,10 @@ const Signup = (props) => {
 
   const changeEyeIconHandler = () => {
     setChangeEyeIcon((prevState) => !prevState);
+  };
+
+  const changeEyeIconTwoHandler = () => {
+    setChangeEyeIconTwo((prevState) => !prevState);
   };
 
   const fullNameHandler = (name) => {
@@ -130,14 +135,14 @@ const Signup = (props) => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={changeEyeIconHandler} activeOpacity={1}>
+        <TouchableOpacity onPress={changeEyeIconTwoHandler} activeOpacity={1}>
           <View style={styles.inputContainer}>
             <Feather style={styles.icon} name="lock" size={18} color="black" />
             <InputText
               autoCapitalize="none"
               keyboardType="default"
               placeholder="Confirm Password"
-              secureTextEntry={changeEyeIcon ? false : true}
+              secureTextEntry={changeEyeIconTwo ? false : true}
               autoCorrect={false}
               onChangeText={confirmPasswordHandler}
             />
@@ -145,7 +150,7 @@ const Signup = (props) => {
             <View style={styles.iconContainer}>
               <Entypo
                 style={styles.eyeIcon}
-                name={changeEyeIcon ? "eye" : "eye-with-line"}
+                name={changeEyeIconTwo ? "eye" : "eye-with-line"}
                 size={20}
                 color="black"
               />
