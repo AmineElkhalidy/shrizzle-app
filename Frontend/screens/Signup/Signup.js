@@ -22,6 +22,9 @@ LogBox.ignoreLogs(["Setting a timer"]);
 //contexts
 import { useAuthContext } from "../../contexts/AuthContext";
 
+const WIDTH = Dimensions.get("window").width;
+const HEIGHT = Dimensions.get("window").height;
+
 const Signup = (props) => {
   //contexts
   const { setToken } = useAuthContext();
@@ -198,8 +201,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   signUpContainer: {
-    height: Dimensions.get("window").height / 2,
-    width: Dimensions.get("window").width,
+    height: HEIGHT / 2,
+    width: WIDTH,
     alignItems: "center",
     justifyContent: "center",
     marginVertical: 50,
@@ -210,8 +213,8 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   inputContainer: {
-    width: Dimensions.get("window").width / 1.3,
-    height: 40,
+    width: WIDTH / 1.3,
+    height: WIDTH * 0.1,
     borderColor: Colors.blue,
     borderWidth: 1,
     borderRadius: 25,
@@ -224,7 +227,7 @@ const styles = StyleSheet.create({
     width: "98%",
   },
   icon: {
-    marginRight: 5,
+    marginRight: WIDTH * 0.005,
   },
   iconContainer: {
     position: "relative",
@@ -233,49 +236,49 @@ const styles = StyleSheet.create({
   },
   eyeIcon: {
     position: "absolute",
-    right: 20,
+    right: -WIDTH * 0,
   },
   signUpButton: {
     backgroundColor: Colors.blue,
-    width: 125,
-    height: 35,
-    borderRadius: 25,
-    marginVertical: 10,
+    width: WIDTH * 0.5,
+    height: WIDTH * 0.08,
+    borderRadius: WIDTH * 0.05,
+    marginVertical: WIDTH * 0.03,
   },
   bottomPart: {
-    height: Dimensions.get("window").height / 1.9,
+    height: HEIGHT / 1.9,
   },
   circle: {
     height: "100%",
     width: "100%",
-    borderTopLeftRadius: 175,
-    borderTopRightRadius: 175,
+    borderTopLeftRadius: WIDTH * 0.5,
+    borderTopRightRadius: WIDTH * 0.5,
     backgroundColor: Colors.blue,
     position: "absolute",
-    bottom: -75,
+    bottom: -WIDTH * 0.15,
   },
   textContainer: {
     width: "100%",
     height: "100%",
     alignItems: "center",
-    marginVertical: 135,
+    marginVertical: WIDTH * 0.3,
   },
   title: {
     fontFamily: "Poppins-Bold",
-    fontSize: 15,
+    fontSize: WIDTH * 0.035,
   },
   buttonContainer: {
-    marginTop: 10,
-    width: 120,
-    height: 35,
-    borderRadius: 25,
+    marginTop: WIDTH * 0.035,
+    width: WIDTH * 0.35,
+    height: WIDTH * 0.08,
+    borderRadius: WIDTH * 0.05,
     borderColor: Colors.orange,
     borderWidth: 1,
   },
   activity: {
     position: "absolute",
-    top: Dimensions.get("window").height * 0.6,
-    left: Dimensions.get("window").width * 0.45,
+    top: HEIGHT * 0.6,
+    left: WIDTH * 0.45,
   },
 });
 
