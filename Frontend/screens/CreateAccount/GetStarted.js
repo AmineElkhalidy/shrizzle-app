@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins",
   },
   imageContainer: {
-    paddingTop: WIDTH * 0.2,
+    paddingTop: WIDTH * 0.1,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

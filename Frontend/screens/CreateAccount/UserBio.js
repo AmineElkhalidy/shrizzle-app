@@ -91,14 +91,14 @@ const styles = StyleSheet.create({
 
   title: {
     paddingTop: HEIGHT * 0.02,
-    marginBottom: HEIGHT * 0.15,
+    marginBottom: HEIGHT * 0.08,
     color: "#00285c",
     fontSize: WIDTH * 0.12,
     fontFamily: "Poppins-Bold",
   },
   inputContainer: {
     width: "100%",
-    marginTop: WIDTH * 0.05,
+    marginTop: WIDTH * 0.0025,
     alignItems: "center",
     justifyContent: "center",
   },

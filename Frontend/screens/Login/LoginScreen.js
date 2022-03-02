@@ -3,6 +3,11 @@ import {
   StyleSheet,
   View,
   Text,
+<<<<<<< HEAD
+=======
+  ActivityIndicator,
+  Dimensions,
+>>>>>>> 4c8296d3d32fed6b149a38ebfe3f24c868ef0978
   TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard,
@@ -27,6 +32,9 @@ const LoginScreen = (props) => {
   //text input
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
+
+  //loading
+  const [isLoading, setIsLoading] = useState(true);
 
   const { setUserData, setToken } = useAuthContext();
 
@@ -134,6 +142,14 @@ const LoginScreen = (props) => {
               </View>
             </TouchableOpacity>
 
+            {isLoading && (
+              <ActivityIndicator
+                style={styles.activity}
+                size="small"
+                color={Colors.blue}
+              />
+            )}
+
             <TouchableOpacity onPress={changeRememberMeIcon} activeOpacity={1}>
               <View style={styles.rememberContainer}>
                 <Feather
@@ -168,32 +184,32 @@ const styles = StyleSheet.create({
   circle: {
     height: "100%",
     width: "100%",
-    borderBottomLeftRadius: 175,
-    borderBottomRightRadius: 175,
+    borderBottomLeftRadius: WIDTH * 0.5,
+    borderBottomRightRadius: WIDTH * 0.5,
     backgroundColor: Colors.blue,
     position: "absolute",
-    top: -165,
+    top: -WIDTH * 0.4,
   },
   textContainer: {
     width: "100%",
     height: "100%",
     alignItems: "center",
-    marginVertical: 60,
+    marginVertical: WIDTH * 0.15,
   },
   title: {
     fontFamily: "Poppins-Bold",
-    fontSize: 18,
+    fontSize: WIDTH * 0.05,
     marginBottom: 0,
   },
   subtitle: {
     fontFamily: "Poppins-Medium",
-    fontSize: 14,
+    fontSize: WIDTH * 0.032,
   },
   buttonContainer: {
-    marginTop: 10,
-    width: 120,
-    height: 35,
-    borderRadius: 25,
+    marginTop: WIDTH * 0.02,
+    width: WIDTH * 0.5,
+    height: WIDTH * 0.08,
+    borderRadius: WIDTH * 0.05,
     borderColor: Colors.orange,
     borderWidth: 1,
   },
@@ -206,24 +222,24 @@ const styles = StyleSheet.create({
     color: Colors.blue,
     alignItems: "center",
     fontFamily: "Poppins-Bold",
-    fontSize: 25,
+    fontSize: WIDTH * 0.06,
   },
   inputContainer: {
     width: WIDTH / 1.3,
-    height: 40,
+    height: WIDTH * 0.1,
     borderColor: Colors.blue,
     borderWidth: 1,
-    borderRadius: 25,
-    marginVertical: 8,
+    borderRadius: WIDTH * 0.05,
+    marginVertical: WIDTH * 0.015,
     alignItems: "center",
-    paddingHorizontal: 12,
+    paddingHorizontal: WIDTH * 0.05,
     flexDirection: "row",
   },
   passwordInput: {
-    width: "98%",
+    width: "80%",
   },
   icon: {
-    marginRight: 5,
+    marginRight: WIDTH * 0.005,
   },
   iconContainer: {
     position: "relative",
@@ -232,7 +248,7 @@ const styles = StyleSheet.create({
   },
   eyeIcon: {
     position: "absolute",
-    right: 20,
+    right: -WIDTH * 0.08,
   },
   rememberContainer: {
     width: "31%",
@@ -247,12 +263,15 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     backgroundColor: Colors.blue,
-    width: 125,
-    height: 35,
-    // width: WIDTH / 2.8,
-    // height: HEIGHT / 20,
-    borderRadius: 25,
-    marginVertical: 10,
+    width: WIDTH * 0.5,
+    height: WIDTH * 0.08,
+    borderRadius: WIDTH * 0.05,
+    marginVertical: WIDTH * 0.02,
+  },
+  activity: {
+    position: "absolute",
+    top: HEIGHT * 0.5,
+    left: WIDTH * 0.45,
   },
 });
 

@@ -31,7 +31,7 @@ function AccountCreated(props) {
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           <Image
-            source={getProfilePic}
+            source={getProfilePic()}
             style={styles.image}
             resizeMode="contain"
           />

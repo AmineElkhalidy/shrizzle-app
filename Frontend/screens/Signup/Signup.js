@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Dimensions, StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  ActivityIndicator,
+  Dimensions,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import BodyText from "../../components/Text/BodyText";
 import Colors from "../../constants/Colors";
 import InputText from "../../components/InputText/InputText";
@@ -26,6 +32,9 @@ const Signup = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  //loading
+  const [isLoading, setIsLoading] = useState(false);
 
   const changeEyeIconHandler = () => {
     setChangeEyeIcon((prevState) => !prevState);
@@ -60,6 +69,7 @@ const Signup = (props) => {
     )
       return;
     if (confirmPassword !== password) return;
+    setIsLoading(true);
 
     try {
       const result = await signUp(fullName, email, password);
@@ -163,6 +173,14 @@ const Signup = (props) => {
         </TouchableOpacity>
       </View>
 
+      {isLoading && (
+        <ActivityIndicator
+          style={styles.activity}
+          size="large"
+          color={Colors.blue}
+        />
+      )}
+
       <View style={styles.bottomPart}>
         <View style={styles.circle}></View>
         <View style={styles.textContainer}>
@@ -258,6 +276,11 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     borderColor: Colors.orange,
     borderWidth: 1,
+  },
+  activity: {
+    position: "absolute",
+    top: Dimensions.get("window").height * 0.6,
+    left: Dimensions.get("window").width * 0.45,
   },
 });
 
