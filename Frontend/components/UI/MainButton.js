@@ -1,9 +1,10 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { widthPercentageToDP as wp } from "react-native-responsive-screen";
 import Colors from "../../constants/Colors";
 const MainButton = (props) => {
   return (
-    <View style={{...styles.buttonContainer, ...props.style}}>
+    <View style={{ ...styles.buttonContainer, ...props.style }}>
       <Text style={styles.buttonText}>{props.children}</Text>
     </View>
   );
@@ -16,7 +17,8 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: Colors.white,
-    fontFamily: 'Poppins-Bold',
+    fontFamily: "Poppins-Medium",
+    fontSize: wp("4.5%"),
   },
 });
 

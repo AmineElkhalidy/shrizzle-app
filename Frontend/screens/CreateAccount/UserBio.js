@@ -19,6 +19,11 @@ import SkipButton from "../../components/Buttons/SkipButton";
 //contexts
 import { useCreateUserContext } from "../../contexts/CreateUserContext";
 
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+
 const WIDTH = Dimensions.get("window").width;
 const HEIGHT = Dimensions.get("window").height;
 
@@ -74,31 +79,31 @@ export default UserBio;
 
 const styles = StyleSheet.create({
   screen: {
-    width: WIDTH,
-    height: HEIGHT,
+    width: wp("100%"),
+    height: hp("100%"),
   },
   imageBackground: {
     width: "100%",
     height: "100%",
-    marginTop: HEIGHT * 0.045,
+    marginTop: hp("4.0%"),
   },
   container: {
-    paddingVertical: HEIGHT * 0.0001,
-    paddingHorizontal: WIDTH * 0.06,
+    paddingVertical: hp("0.1%"),
+    paddingHorizontal: wp("6%"),
     position: "relative",
-    marginTop: HEIGHT * 0.002,
+    marginTop: hp("0.3%"),
   },
 
   title: {
-    paddingTop: HEIGHT * 0.02,
-    marginBottom: HEIGHT * 0.08,
+    paddingTop: hp("2%"),
+    marginBottom: hp("8%"),
     color: "#00285c",
-    fontSize: WIDTH * 0.12,
+    fontSize: wp("12%"),
     fontFamily: "Poppins-Bold",
   },
   inputContainer: {
     width: "100%",
-    marginTop: WIDTH * 0.0025,
+    marginTop: wp("15%"),
     alignItems: "center",
     justifyContent: "center",
   },
@@ -107,14 +112,14 @@ const styles = StyleSheet.create({
     borderColor: Colors.blue,
     backgroundColor: "white",
     borderWidth: 1,
-    borderRadius: 25,
+    borderRadius: wp("5%"),
     overflow: "hidden",
   },
   input: {
     width: "100%",
     textAlignVertical: "top",
     fontFamily: "Poppins-Medium",
-    fontSize: 16,
-    padding: HEIGHT * 0.025,
+    fontSize: wp("4.75%"),
+    padding: hp("2.5%"),
   },
 });

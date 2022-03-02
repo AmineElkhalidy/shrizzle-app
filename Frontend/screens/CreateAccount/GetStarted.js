@@ -11,6 +11,11 @@ import {
 import WelcomeImg from "../../Assets/TestPictures/welcome_img.svg";
 import DefaultButton from "../../components/Buttons/DefaultButton";
 
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+
 const WIDTH = Dimensions.get("window").width;
 const HEIGHT = Dimensions.get("window").height;
 
@@ -46,9 +51,9 @@ export default GetStarted;
 
 const styles = StyleSheet.create({
   screen: {
-    width: WIDTH,
-    height: HEIGHT,
-    marginTop: HEIGHT * 0.022,
+    width: wp("100%"),
+    height: hp("100%"),
+    marginTop: hp("2.2%"),
   },
   ImageBackground: {
     width: "100%",
@@ -56,23 +61,23 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   container: {
-    padding: WIDTH * 0.05,
+    padding: wp("5%"),
     position: "relative",
   },
   hi: {
-    paddingTop: WIDTH * 0.1,
-    marginBottom: WIDTH * 0.02,
+    paddingTop: hp("3%"),
+    marginBottom: hp("1%"),
     color: "#00285c",
-    fontSize: WIDTH * 0.12,
+    fontSize: wp("12%"),
     fontFamily: "Poppins-Medium",
   },
   info: {
     color: "white",
-    fontSize: WIDTH * 0.05,
+    fontSize: wp("5%"),
     fontFamily: "Poppins",
   },
   imageContainer: {
-    paddingTop: WIDTH * 0.1,
+    paddingTop: wp("10%"),
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

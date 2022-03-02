@@ -15,6 +15,11 @@ import { AntDesign, Entypo, Feather } from "@expo/vector-icons";
 import { signUp } from "../../helpers/authHelpers/signUpHelper";
 import { loginHandler } from "../../helpers/authHelpers/loginHelper";
 
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+
 //ignore firebase timer warning
 import { LogBox } from "react-native";
 LogBox.ignoreLogs(["Setting a timer"]);
@@ -182,16 +187,17 @@ const Signup = (props) => {
       )}
 
       <View style={styles.bottomPart}>
-        <View style={styles.circle}></View>
-        <View style={styles.textContainer}>
-          <BodyText style={styles.title}>Already have an account?</BodyText>
+        <View style={styles.circle}>
+          <View style={styles.textContainer}>
+            <BodyText style={styles.title}>Already have an account?</BodyText>
 
-          <TouchableOpacity
-            activeOpacity={0.5}
-            onPress={() => props.navigation.navigate("Login")}
-          >
-            <MainButton style={styles.buttonContainer}>Login</MainButton>
-          </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.5}
+              onPress={() => props.navigation.navigate("Login")}
+            >
+              <MainButton style={styles.buttonContainer}>Login</MainButton>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </View>
@@ -200,36 +206,37 @@ const Signup = (props) => {
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
+    width: wp("100%"),
+    height: hp("100%"),
   },
   signUpContainer: {
-    height: Dimensions.get("window").height / 2,
-    width: Dimensions.get("window").width,
+    height: hp("50%"),
+    width: wp("100%"),
     alignItems: "center",
     justifyContent: "center",
-    marginVertical: 50,
+    marginVertical: wp("15%"),
   },
   signUpText: {
     color: Colors.blue,
     fontFamily: "Poppins-Bold",
-    fontSize: 25,
+    fontSize: wp("8%"),
   },
   inputContainer: {
-    width: Dimensions.get("window").width / 1.3,
-    height: 40,
+    width: wp("76.5%"),
+    height: wp("13"),
     borderColor: Colors.blue,
     borderWidth: 1,
-    borderRadius: 25,
-    marginVertical: 8,
+    borderRadius: wp("7%"),
+    marginVertical: wp("2%"),
     alignItems: "center",
-    paddingHorizontal: 12,
+    paddingHorizontal: wp("4%"),
     flexDirection: "row",
   },
   passwordInput: {
     width: "98%",
   },
   icon: {
-    marginRight: 5,
+    marginRight: wp("1.5%"),
   },
   iconContainer: {
     position: "relative",
@@ -238,49 +245,51 @@ const styles = StyleSheet.create({
   },
   eyeIcon: {
     position: "absolute",
-    right: 20,
+    right: wp("0.25%"),
   },
   signUpButton: {
     backgroundColor: Colors.blue,
-    width: 125,
-    height: 35,
-    borderRadius: 25,
-    marginVertical: 10,
+    width: wp("40%"),
+    height: wp("12%"),
+    borderRadius: wp("7%"),
+    marginTop: hp("1%"),
   },
   bottomPart: {
-    height: Dimensions.get("window").height / 1.9,
+    height: hp("30%"),
   },
   circle: {
     height: "100%",
     width: "100%",
-    borderTopLeftRadius: 175,
-    borderTopRightRadius: 175,
+    borderTopLeftRadius: wp("50"),
+    borderTopRightRadius: hp("26%"),
     backgroundColor: Colors.blue,
     position: "absolute",
-    bottom: -75,
+    bottom: -105,
+    justifyContent: "center",
+    alignItems: "center",
   },
   textContainer: {
     width: "100%",
     height: "100%",
     alignItems: "center",
-    marginVertical: 135,
+    justifyContent: "center",
   },
   title: {
     fontFamily: "Poppins-Bold",
-    fontSize: 15,
+    fontSize: wp("5.2%"),
   },
   buttonContainer: {
-    marginTop: 10,
-    width: 120,
-    height: 35,
-    borderRadius: 25,
+    marginTop: wp("3%"),
+    width: wp("40%"),
+    height: wp("12%"),
+    borderRadius: wp("6%"),
     borderColor: Colors.orange,
     borderWidth: 1,
   },
   activity: {
     position: "absolute",
-    top: Dimensions.get("window").height * 0.6,
-    left: Dimensions.get("window").width * 0.45,
+    top: hp("60%"),
+    left: wp("45%"),
   },
 });
 
