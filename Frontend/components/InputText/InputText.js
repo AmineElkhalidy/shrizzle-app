@@ -7,7 +7,7 @@ const InputText = (props) => {
 
 const styles = StyleSheet.create({
   input: {
-    width: "100%",
+    width: "90%",
     height: "100%",
     fontFamily: "Poppins-Medium",
   },
