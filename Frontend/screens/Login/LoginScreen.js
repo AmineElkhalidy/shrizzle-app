@@ -3,7 +3,6 @@ import {
   StyleSheet,
   View,
   Text,
-  Dimensions,
   TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard,
@@ -19,8 +18,10 @@ import { loginHandler } from "../../helpers/authHelpers/loginHelper";
 import { getUserData } from "../../helpers/userDataHelpers/getUserDataHelper";
 import { useAuthContext } from "../../contexts/AuthContext";
 
-const WIDTH = Dimensions.get("window").width;
-const HEIGHT = Dimensions.get("window").height;
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 
 const LoginScreen = (props) => {
   //text input
@@ -156,8 +157,8 @@ const LoginScreen = (props) => {
 
 const styles = StyleSheet.create({
   screen: {
-    width: WIDTH,
-    height: HEIGHT,
+    width: wp("100%"),
+    height: hp("100%"),
     position: "relative",
   },
   topPart: {
