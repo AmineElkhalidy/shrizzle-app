@@ -13,7 +13,7 @@ import { useCreateUserContext } from "../contexts/CreateUserContext";
 const WIDTH = Dimensions.get("window").width;
 const HEIGHT = Dimensions.get("window").height;
 
-function SocialButton({ handle, isSet, onPress, style }) {
+function SocialButton({ handle, isSet, onPress }) {
   const {
     phone,
     email,
@@ -53,7 +53,7 @@ function SocialButton({ handle, isSet, onPress, style }) {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.socialButton}>
-        <Image source={handle.icon} style={{ ...styles.socialIcon, style }} />
+        <Image source={handle.icon} style={{ ...styles.socialIcon }} />
         {isHandlerSet(handle.title) && <Checkmark style={styles.checkmark} />}
       </View>
     </TouchableOpacity>
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     width: WIDTH * 0.2,
     height: WIDTH * 0.2,
     overflow: "hidden",
-    borderRadius: WIDTH * 0.2,
+    borderRadius: WIDTH * 0.01,
   },
 
   checkmark: {

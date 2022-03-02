@@ -3,6 +3,7 @@ import {
   StyleSheet,
   View,
   Text,
+  ActivityIndicator,
   Dimensions,
   TouchableOpacity,
   TouchableWithoutFeedback,
@@ -26,6 +27,9 @@ const LoginScreen = (props) => {
   //text input
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
+
+  //loading
+  const [isLoading, setIsLoading] = useState(true);
 
   const { setUserData, setToken } = useAuthContext();
 
@@ -132,6 +136,14 @@ const LoginScreen = (props) => {
                 </View>
               </View>
             </TouchableOpacity>
+
+            {isLoading && (
+              <ActivityIndicator
+                style={styles.activity}
+                size="small"
+                color={Colors.blue}
+              />
+            )}
 
             <TouchableOpacity onPress={changeRememberMeIcon} activeOpacity={1}>
               <View style={styles.rememberContainer}>
@@ -252,6 +264,11 @@ const styles = StyleSheet.create({
     // height: HEIGHT / 20,
     borderRadius: 25,
     marginVertical: 10,
+  },
+  activity: {
+    position: "absolute",
+    top: Dimensions.get("window").height * 0.5,
+    left: Dimensions.get("window").width * 0.45,
   },
 });
 

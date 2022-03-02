@@ -8,15 +8,11 @@ import {
   ImageBackground,
   ScrollView,
 } from "react-native";
-import React, { useEffect } from "react";
-import RoundButton from "../../components/RoundButton";
-import ProfilePicture from "../../components/ProfilePicture";
-import DefaultCover from "../../Assets/TestPictures/default_cover.svg";
+import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../../contexts/AuthContext";
 import Colors from "../../constants/Colors";
-import { MODALS_INFO } from "../../constants/SocialHandlesModal";
-import SocialButton from "../../components/SocialButton";
 import { getUserData } from "../../helpers/userDataHelpers/getUserDataHelper";
+import SocialHandle from "../../components/MyProfile/SocialHandle";
 
 const WIDTH = Dimensions.get("window").width;
 const HEIGHT = Dimensions.get("window").height;
@@ -28,26 +24,35 @@ function UserProfile(props) {
     try {
       //get the user data
       const getUserResult = await getUserData(token);
-      console.log(getUserResult);
       if (
         getUserResult.status === 200 &&
         getUserResult.data.data.getUserData !== null
       ) {
         setUserData(getUserResult.data.data.getUserData);
-        console.log(getUserResult.data.data.getUserData);
       }
     } catch (err) {
       console.log(err);
     }
   };
 
+  let Image_Http_URL = {
+    uri:
+      "https://firebasestorage.googleapis.com/v0/b/shrizzle-82093.appspot.com/o/images%2Fcover.jpg?alt=media&token=f3d9770c-1612-45ac-bfaa-95f06c1e46d3",
+  };
+
+  const getProfilePic = () => {
+    if (userData?.personalProfile.profilePic !== "") {
+      return { uri: userData?.personalProfile.profilePic };
+    } else {
+      return Image_Http_URL;
+    }
+  };
+
   useEffect(() => {
     getUser();
+    console.log(userData);
   }, []);
 
-  let Image_Http_URL = {
-    uri: "https://firebasestorage.googleapis.com/v0/b/shrizzle-82093.appspot.com/o/images%2Fcover.jpg?alt=media&token=f3d9770c-1612-45ac-bfaa-95f06c1e46d3",
-  };
   return (
     <View style={styles.screen}>
       <View style={styles.container}>
@@ -61,7 +66,7 @@ function UserProfile(props) {
           <View style={styles.profileNameContainer}>
             {/* ===== Profile PICTURE ===== */}
             <View>
-              <Image style={styles.profilePic} source={Image_Http_URL} />
+              <Image style={styles.profilePic} source={getProfilePic()} />
             </View>
 
             {/* ===== Profile NAME ===== */}
@@ -75,6 +80,7 @@ function UserProfile(props) {
             <Text style={styles.title}>Social Media</Text>
             <View style={styles.socialsContainer}>
               {/* ===== Profile Social Media Icons ===== */}
+              <SocialHandle personalProfile={userData?.personalProfile} />
             </View>
           </ScrollView>
         </View>

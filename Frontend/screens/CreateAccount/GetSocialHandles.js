@@ -42,7 +42,6 @@ function GetSocialHandles(props) {
                   setIsModalOpen(true);
                   setCurrentHandler(handle);
                 }}
-                style={styles.SocialButtonIcon}
               />
             ))}
           </View>
@@ -86,9 +85,9 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   title: {
-    marginBottom: WIDTH * 0.35,
+    marginBottom: WIDTH * 0.2,
     color: "white",
-    fontSize: WIDTH * 0.12,
+    fontSize: WIDTH * 0.1,
     fontFamily: "Poppins-Bold",
   },
   socialsContainer: {
@@ -96,9 +95,5 @@ const styles = StyleSheet.create({
     alignContent: "center",
     flexDirection: "row",
     flexWrap: "wrap",
-  },
-  SocialButtonIcon: {
-    width: WIDTH * 0.3,
-    height: HEIGHT * 0.3,
   },
 });
