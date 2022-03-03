@@ -6,6 +6,7 @@ import {
   Text,
   ImageBackground,
   Dimensions,
+  ScrollView,
 } from "react-native";
 
 import WelcomeImg from "../../Assets/TestPictures/welcome_img.svg";
@@ -16,12 +17,9 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 
-const WIDTH = Dimensions.get("window").width;
-const HEIGHT = Dimensions.get("window").height;
-
 function GetStarted(props) {
   return (
-    <View style={styles.screen}>
+    <ScrollView style={styles.screen}>
       <ImageBackground
         source={require("../../Assets/TestPictures/orange_bg.png")}
         style={styles.screen}
@@ -43,7 +41,7 @@ function GetStarted(props) {
           />
         </View>
       </ImageBackground>
-    </View>
+    </ScrollView>
   );
 }
 

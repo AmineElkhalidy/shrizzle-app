@@ -17,6 +17,11 @@ import SocialHandle from "../../components/MyProfile/SocialHandle";
 const WIDTH = Dimensions.get("window").width;
 const HEIGHT = Dimensions.get("window").height;
 
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+
 function UserProfile(props) {
   const { userData, setUserData, token } = useAuthContext();
 
@@ -36,8 +41,7 @@ function UserProfile(props) {
   };
 
   let Image_Http_URL = {
-    uri:
-      "https://firebasestorage.googleapis.com/v0/b/shrizzle-82093.appspot.com/o/images%2Fcover.jpg?alt=media&token=f3d9770c-1612-45ac-bfaa-95f06c1e46d3",
+    uri: "https://firebasestorage.googleapis.com/v0/b/shrizzle-82093.appspot.com/o/images%2Fcover.jpg?alt=media&token=f3d9770c-1612-45ac-bfaa-95f06c1e46d3",
   };
 
   const getProfilePic = () => {
@@ -93,50 +97,50 @@ export default UserProfile;
 
 const styles = StyleSheet.create({
   screen: {
-    width: WIDTH,
-    height: HEIGHT,
+    width: wp("100%"),
+    height: hp("100%"),
     position: "relative",
   },
   cover: {
-    width: WIDTH,
-    height: HEIGHT * 0.28,
+    width: wp("100%"),
+    height: hp("28%"),
     backgroundColor: "#000",
   },
   profile: {
-    paddingHorizontal: WIDTH * 0.05,
+    paddingHorizontal: wp("5%"),
   },
 
   profileNameContainer: {
-    width: WIDTH,
+    width: wp("100%"),
     flexDirection: "row",
-    marginTop: WIDTH * 0.02,
+    marginTop: wp("2%"),
   },
 
   profilePic: {
-    width: WIDTH * 0.25,
-    height: WIDTH * 0.25,
-    borderRadius: WIDTH * 0.5,
-    marginTop: -WIDTH * 0.1,
+    width: wp("25%"),
+    height: wp("25%"),
+    borderRadius: wp("50%"),
+    marginTop: wp("-10%"),
     borderWidth: 2,
     borderColor: "#edd",
   },
 
   profileName: {
-    marginTop: WIDTH * 0.01,
-    marginLeft: WIDTH * 0.04,
-    fontSize: WIDTH * 0.05,
-    fontFamily: "Poppins",
+    marginTop: wp("1%"),
+    marginLeft: wp("4%"),
+    fontSize: wp("5.5%"),
+    fontFamily: "Poppins-Medium",
   },
 
   bio: {
-    marginTop: WIDTH * 0.05,
+    marginTop: wp("5%"),
     color: Colors.greyText,
     fontFamily: "Poppins",
   },
 
   title: {
-    marginTop: WIDTH * 0.03,
-    fontSize: WIDTH * 0.05,
+    marginTop: wp("3%"),
+    fontSize: wp("5.25%"),
     fontFamily: "Poppins",
   },
 });

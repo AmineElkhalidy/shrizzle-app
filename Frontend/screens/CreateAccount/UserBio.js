@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import {
-  Dimensions,
   StyleSheet,
   View,
   Text,
   ImageBackground,
   TextInput,
   KeyboardAvoidingView,
+  ScrollView,
 } from "react-native";
 
 //colors
@@ -23,9 +23,6 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-
-const WIDTH = Dimensions.get("window").width;
-const HEIGHT = Dimensions.get("window").height;
 
 function UserBio(props) {
   const [bioInput, setBioInput] = useState("");

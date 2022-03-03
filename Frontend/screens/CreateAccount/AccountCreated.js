@@ -8,8 +8,13 @@ import Avatar from "../../Assets/TestPictures/avatar.png";
 import BodyText from "../../components/Text/BodyText";
 import { useAuthContext } from "../../contexts/AuthContext";
 
-const WIDTH = Dimensions.get("window").width;
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+
 const HEIGHT = Dimensions.get("window").height;
+const WIDTH = Dimensions.get("window").width;
 
 function AccountCreated(props) {
   const { userData } = useAuthContext();
@@ -52,24 +57,24 @@ export default AccountCreated;
 
 const styles = StyleSheet.create({
   screen: {
-    width: WIDTH,
-    height: HEIGHT,
+    width: wp("100%"),
+    height: hp("100%"),
     justifyContent: "center",
     alignItems: "center",
   },
   textContainer: {
     width: "100%",
-    marginBottom: 30,
+    marginBottom: hp("10%"),
   },
   title: {
-    fontSize: 21,
+    fontSize: wp("5.75%"),
     fontFamily: "Poppins-Bold",
     textAlign: "center",
     color: Colors.blue,
   },
   container: {
     width: "90%",
-    height: HEIGHT * (1 / 2),
+    height: hp("50%"),
     justifyContent: "center",
     alignItems: "center",
   },
@@ -80,20 +85,20 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 10,
+    marginBottom: wp("5%"),
   },
   image: {
     width: "100%",
     height: "100%",
   },
   text: {
-    fontSize: 20,
+    fontSize: wp("6%"),
     color: Colors.blue,
     marginBottom: 0,
     fontFamily: "Poppins-Medium",
   },
   buttonContainer: {
-    paddingVertical: 10,
-    paddingHorizontal: 35,
+    paddingVertical: hp("1.65%"),
+    paddingHorizontal: wp("9.5%"),
   },
 });

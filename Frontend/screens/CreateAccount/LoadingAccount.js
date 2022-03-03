@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { ActivityIndicator, Text, StyleSheet, View } from "react-native";
+import { widthPercentageToDP } from "react-native-responsive-screen";
 import { API_URL } from "../../constants/api";
 import Colors from "../../constants/Colors";
 import { useAuthContext } from "../../contexts/AuthContext";
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
     color: "white",
     marginTop: 15,
     fontFamily: "Poppins",
-    fontSize: 15,
+    fontSize: widthPercentageToDP("5%"),
   },
 });
 

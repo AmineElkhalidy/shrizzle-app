@@ -5,6 +5,7 @@ import {
   Dimensions,
   Text,
   ImageBackground,
+  ScrollView,
 } from "react-native";
 
 //components
@@ -16,10 +17,6 @@ import SocialButton from "../../components/SocialButton";
 //constants
 import { MODALS_INFO } from "../../constants/SocialHandlesModal";
 
-// Dimensions API Variables
-const WIDTH = Dimensions.get("window").width;
-const HEIGHT = Dimensions.get("window").height;
-
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -30,7 +27,7 @@ function GetSocialHandles(props) {
   const [currentHandler, setCurrentHandler] = useState({});
 
   return (
-    <View style={styles.screen}>
+    <ScrollView style={styles.screen}>
       <ImageBackground
         source={require("../../Assets/TestPictures/blackbg.png")}
         style={styles.imageBackground}
@@ -67,7 +64,7 @@ function GetSocialHandles(props) {
           )}
         </View>
       </ImageBackground>
-    </View>
+    </ScrollView>
   );
 }
 

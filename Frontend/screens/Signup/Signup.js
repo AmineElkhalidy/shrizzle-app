@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: hp("26%"),
     backgroundColor: Colors.blue,
     position: "absolute",
-    bottom: -105,
+    bottom: -hp("12.5%"),
     justifyContent: "center",
     alignItems: "center",
   },

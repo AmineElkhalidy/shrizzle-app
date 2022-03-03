@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: hp("26%"),
     backgroundColor: Colors.blue,
     position: "absolute",
-    top: -1,
+    top: hp("-1%"),
     alignItems: "center",
   },
   textContainer: {
@@ -280,8 +280,8 @@ const styles = StyleSheet.create({
   },
   activity: {
     position: "absolute",
-    top: hp("46%") * 0.46,
-    left: wp("-50%") * 0.45,
+    top: hp("46%"),
+    left: wp("-50%"),
   },
 });
 

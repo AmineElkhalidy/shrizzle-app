@@ -10,6 +10,11 @@ import {
   View,
 } from "react-native";
 
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+
 import SkipButton from "../Buttons/SkipButton";
 import DefaultButton from "../Buttons/DefaultButton";
 import DefaultInput from "../InputText/DefaultInput";
@@ -114,18 +119,17 @@ const styles = StyleSheet.create({
     //padding & margin
 
     //other styling
-    display: "flex",
     justifyContent: "center",
     alignItems: "center",
   },
   title: {
     color: "white",
-    fontSize: Dimensions.get("window").width * 0.08,
-    marginBottom: Dimensions.get("window").width * 0.08,
+    fontSize: wp("7.5%"),
+    marginBottom: wp("7%"),
+    fontFamily: "Poppins",
   },
   textInputContainer: {
     width: "100%",
-    display: "flex",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -142,24 +146,24 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   input: {
-    marginHorizontal: Dimensions.get("window").width * 0.05,
+    marginHorizontal: wp("5%"),
     textAlign: "center",
     color: Colors.blue,
   },
 
   button: {
-    borderRadius: Dimensions.get("window").width * 0.08,
-    paddingVertical: Dimensions.get("window").width * 0.02,
-    margin: Dimensions.get("window").width * 0.08,
-    marginHorizontal: Dimensions.get("window").width * 0.08,
-    paddingHorizontal: Dimensions.get("window").width * 0.1,
-    marginBottom: Dimensions.get("window").width * 0.04,
+    borderRadius: wp("8%"),
+    paddingVertical: wp("2%"),
+    margin: wp("8%"),
+    marginHorizontal: wp("8%"),
+    paddingHorizontal: wp("10%"),
+    marginBottom: wp("4%"),
     backgroundColor: Colors.orange,
   },
   buttonText: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 16,
+    fontSize: wp("4.5%"),
     textAlign: "center",
   },
 });
