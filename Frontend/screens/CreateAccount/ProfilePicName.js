@@ -33,6 +33,11 @@ import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { useCreateUserContext } from "../../contexts/CreateUserContext";
 import Colors from "../../constants/Colors";
 
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+
 const WIDTH = Dimensions.get("window").width;
 const HEIGHT = Dimensions.get("window").height;
 
@@ -123,25 +128,25 @@ export default ProfilePicName;
 
 const styles = StyleSheet.create({
   screen: {
-    width: WIDTH,
-    height: HEIGHT,
+    width: wp("100%"),
+    height: hp("100%"),
     position: "relative",
   },
   container: {
-    padding: HEIGHT * 0.025,
+    padding: hp("2.5%"),
     position: "relative",
     justifyContent: "center",
   },
   title: {
-    paddingTop: HEIGHT * 0.04,
-    marginBottom: HEIGHT * 0.08,
+    paddingTop: hp("4%"),
+    marginBottom: hp("8%"),
     color: Colors.blue,
-    fontSize: 50,
+    fontSize: wp("15%"),
     fontFamily: "Poppins-Bold",
   },
   avatarContainer: {
     width: "100%",
-    marginBottom: HEIGHT * 0.02,
+    marginBottom: hp("2%"),
     position: "relative",
     justifyContent: "center",
     alignItems: "center",
@@ -157,6 +162,6 @@ const styles = StyleSheet.create({
   logoContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: HEIGHT * 0.05,
+    marginTop: hp("5%"),
   },
 });

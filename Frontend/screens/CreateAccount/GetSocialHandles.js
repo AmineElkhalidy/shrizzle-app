@@ -20,6 +20,11 @@ import { MODALS_INFO } from "../../constants/SocialHandlesModal";
 const WIDTH = Dimensions.get("window").width;
 const HEIGHT = Dimensions.get("window").height;
 
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+
 function GetSocialHandles(props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentHandler, setCurrentHandler] = useState({});
@@ -70,24 +75,24 @@ export default GetSocialHandles;
 
 const styles = StyleSheet.create({
   screen: {
-    width: WIDTH,
-    height: HEIGHT,
+    width: wp("100%"),
+    height: hp("100%"),
   },
   imageBackground: {
-    width: WIDTH,
-    height: HEIGHT,
+    width: "100%",
+    height: "100%",
     position: "relative",
-    marginTop: HEIGHT * 0.04,
+    marginTop: hp("4%"),
   },
   container: {
-    padding: WIDTH * 0.15,
-    paddingHorizontal: WIDTH * 0.05,
+    padding: wp("15%"),
+    paddingHorizontal: wp("5%"),
     position: "relative",
   },
   title: {
-    marginBottom: WIDTH * 0.2,
+    marginBottom: wp("20%"),
     color: "white",
-    fontSize: WIDTH * 0.1,
+    fontSize: wp("10%"),
     fontFamily: "Poppins-Bold",
   },
   socialsContainer: {
@@ -95,5 +100,6 @@ const styles = StyleSheet.create({
     alignContent: "center",
     flexDirection: "row",
     flexWrap: "wrap",
+    marginTop: hp("8%"),
   },
 });

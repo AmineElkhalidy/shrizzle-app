@@ -6,6 +6,7 @@ import {
   Text,
   View,
 } from "react-native";
+import { widthPercentageToDP } from "react-native-responsive-screen";
 
 function DefaultButton({ text, onPress, style }) {
   return (
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontFamily: "Poppins-Medium",
-    fontSize: 16,
+    fontSize: widthPercentageToDP("4.6%"),
     textAlign: "center",
   },
 });

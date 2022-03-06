@@ -15,6 +15,11 @@ import { AntDesign, Entypo, Feather } from "@expo/vector-icons";
 import { signUp } from "../../helpers/authHelpers/signUpHelper";
 import { loginHandler } from "../../helpers/authHelpers/loginHelper";
 
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+
 //ignore firebase timer warning
 import { LogBox } from "react-native";
 LogBox.ignoreLogs(["Setting a timer"]);
@@ -29,6 +34,7 @@ const Signup = (props) => {
   //contexts
   const { setToken } = useAuthContext();
   const [changeEyeIcon, setChangeEyeIcon] = useState(false);
+  const [changeEyeIconTwo, setChangeEyeIconTwo] = useState(false);
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -40,6 +46,10 @@ const Signup = (props) => {
 
   const changeEyeIconHandler = () => {
     setChangeEyeIcon((prevState) => !prevState);
+  };
+
+  const changeEyeIconTwoHandler = () => {
+    setChangeEyeIconTwo((prevState) => !prevState);
   };
 
   const fullNameHandler = (name) => {
@@ -143,14 +153,14 @@ const Signup = (props) => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={changeEyeIconHandler} activeOpacity={1}>
+        <TouchableOpacity onPress={changeEyeIconTwoHandler} activeOpacity={1}>
           <View style={styles.inputContainer}>
             <Feather style={styles.icon} name="lock" size={18} color="black" />
             <InputText
               autoCapitalize="none"
               keyboardType="default"
               placeholder="Confirm Password"
-              secureTextEntry={changeEyeIcon ? false : true}
+              secureTextEntry={changeEyeIconTwo ? false : true}
               autoCorrect={false}
               onChangeText={confirmPasswordHandler}
             />
@@ -158,7 +168,7 @@ const Signup = (props) => {
             <View style={styles.iconContainer}>
               <Entypo
                 style={styles.eyeIcon}
-                name={changeEyeIcon ? "eye" : "eye-with-line"}
+                name={changeEyeIconTwo ? "eye" : "eye-with-line"}
                 size={20}
                 color="black"
               />
@@ -180,16 +190,17 @@ const Signup = (props) => {
       )}
 
       <View style={styles.bottomPart}>
-        <View style={styles.circle}></View>
-        <View style={styles.textContainer}>
-          <BodyText style={styles.title}>Already have an account?</BodyText>
+        <View style={styles.circle}>
+          <View style={styles.textContainer}>
+            <BodyText style={styles.title}>Already have an account?</BodyText>
 
-          <TouchableOpacity
-            activeOpacity={0.5}
-            onPress={() => props.navigation.navigate("Login")}
-          >
-            <MainButton style={styles.buttonContainer}>Login</MainButton>
-          </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.5}
+              onPress={() => props.navigation.navigate("Login")}
+            >
+              <MainButton style={styles.buttonContainer}>Login</MainButton>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </View>
@@ -198,36 +209,37 @@ const Signup = (props) => {
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
+    width: wp("100%"),
+    height: hp("100%"),
   },
   signUpContainer: {
-    height: HEIGHT / 2,
-    width: WIDTH,
+    height: hp("50%"),
+    width: wp("100%"),
     alignItems: "center",
     justifyContent: "center",
-    marginVertical: 50,
+    marginVertical: wp("15%"),
   },
   signUpText: {
     color: Colors.blue,
     fontFamily: "Poppins-Bold",
-    fontSize: 25,
+    fontSize: wp("8%"),
   },
   inputContainer: {
-    width: WIDTH / 1.3,
-    height: WIDTH * 0.1,
+    width: wp("76.5%"),
+    height: wp("13"),
     borderColor: Colors.blue,
     borderWidth: 1,
-    borderRadius: 25,
-    marginVertical: 8,
+    borderRadius: wp("7%"),
+    marginVertical: wp("2%"),
     alignItems: "center",
-    paddingHorizontal: 12,
+    paddingHorizontal: wp("4%"),
     flexDirection: "row",
   },
   passwordInput: {
     width: "98%",
   },
   icon: {
-    marginRight: WIDTH * 0.005,
+    marginRight: wp("1.5%"),
   },
   iconContainer: {
     position: "relative",
@@ -236,49 +248,51 @@ const styles = StyleSheet.create({
   },
   eyeIcon: {
     position: "absolute",
-    right: -WIDTH * 0,
+    right: wp("0.25%"),
   },
   signUpButton: {
     backgroundColor: Colors.blue,
-    width: WIDTH * 0.5,
-    height: WIDTH * 0.08,
-    borderRadius: WIDTH * 0.05,
-    marginVertical: WIDTH * 0.03,
+    width: wp("40%"),
+    height: wp("12%"),
+    borderRadius: wp("7%"),
+    marginTop: hp("1%"),
   },
   bottomPart: {
-    height: HEIGHT / 1.9,
+    height: hp("30%"),
   },
   circle: {
     height: "100%",
     width: "100%",
-    borderTopLeftRadius: WIDTH * 0.5,
-    borderTopRightRadius: WIDTH * 0.5,
+    borderTopLeftRadius: wp("50"),
+    borderTopRightRadius: hp("26%"),
     backgroundColor: Colors.blue,
     position: "absolute",
-    bottom: -WIDTH * 0.15,
+    bottom: -105,
+    justifyContent: "center",
+    alignItems: "center",
   },
   textContainer: {
     width: "100%",
     height: "100%",
     alignItems: "center",
-    marginVertical: WIDTH * 0.3,
+    justifyContent: "center",
   },
   title: {
     fontFamily: "Poppins-Bold",
-    fontSize: WIDTH * 0.035,
+    fontSize: wp("5.2%"),
   },
   buttonContainer: {
-    marginTop: WIDTH * 0.035,
-    width: WIDTH * 0.35,
-    height: WIDTH * 0.08,
-    borderRadius: WIDTH * 0.05,
+    marginTop: wp("3%"),
+    width: wp("40%"),
+    height: wp("12%"),
+    borderRadius: wp("6%"),
     borderColor: Colors.orange,
     borderWidth: 1,
   },
   activity: {
     position: "absolute",
-    top: HEIGHT * 0.6,
-    left: WIDTH * 0.45,
+    top: hp("60%"),
+    left: wp("45%"),
   },
 });
 

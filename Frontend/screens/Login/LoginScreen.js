@@ -20,8 +20,13 @@ import { loginHandler } from "../../helpers/authHelpers/loginHelper";
 import { getUserData } from "../../helpers/userDataHelpers/getUserDataHelper";
 import { useAuthContext } from "../../contexts/AuthContext";
 
-const WIDTH = Dimensions.get("window").width;
-const HEIGHT = Dimensions.get("window").height;
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+
+// const WIDTH = Dimensions.get("window").width;
+// const HEIGHT = Dimensions.get("window").height;
 
 const LoginScreen = (props) => {
   //text input
@@ -76,23 +81,26 @@ const LoginScreen = (props) => {
       <KeyboardAvoidingView behavior="position">
         <View style={styles.screen}>
           <View style={styles.topPart}>
-            <View style={styles.circle}></View>
-            <View style={styles.textContainer}>
-              <BodyText style={styles.title}>New here?</BodyText>
-              <BodyText style={styles.subtitle}>
-                Setup a new account with just a few clicks!
-              </BodyText>
-              <TouchableOpacity
-                activeOpacity={0.5}
-                onPress={() => props.navigation.navigate("Signup")}
-              >
-                <MainButton style={styles.buttonContainer}>Sign Up</MainButton>
-              </TouchableOpacity>
+            <View style={styles.circle}>
+              <View style={styles.textContainer}>
+                <BodyText style={styles.title}>New here?</BodyText>
+                <BodyText style={styles.subtitle}>
+                  Setup a new account with just a few clicks!
+                </BodyText>
+                <TouchableOpacity
+                  activeOpacity={0.5}
+                  onPress={() => props.navigation.navigate("Signup")}
+                >
+                  <MainButton style={styles.buttonContainer}>
+                    Sign Up
+                  </MainButton>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
 
           <View style={styles.bottomPart}>
-            <BodyText style={styles.containerTitle}>Welcome Back!</BodyText>
+            <BodyText style={styles.headerTitle}>Welcome Back!</BodyText>
             <View style={styles.inputContainer}>
               <Entypo
                 style={styles.icon}
@@ -168,73 +176,76 @@ const LoginScreen = (props) => {
 
 const styles = StyleSheet.create({
   screen: {
-    width: WIDTH,
-    height: HEIGHT,
+    width: wp("100%"),
+    height: hp("100%"),
     position: "relative",
   },
   topPart: {
-    height: HEIGHT / 1.8,
+    height: hp("30%"),
+    width: wp("100%"),
     alignItems: "center",
   },
   circle: {
     height: "100%",
     width: "100%",
-    borderBottomLeftRadius: WIDTH * 0.5,
-    borderBottomRightRadius: WIDTH * 0.5,
+    borderBottomLeftRadius: wp("50"),
+    borderBottomRightRadius: hp("26%"),
     backgroundColor: Colors.blue,
     position: "absolute",
-    top: -WIDTH * 0.4,
+    top: -1,
+    alignItems: "center",
   },
   textContainer: {
     width: "100%",
     height: "100%",
     alignItems: "center",
-    marginVertical: WIDTH * 0.15,
+    marginVertical: wp("15%"),
   },
   title: {
     fontFamily: "Poppins-Bold",
-    fontSize: WIDTH * 0.05,
+    fontSize: wp("6%"),
     marginBottom: 0,
   },
   subtitle: {
     fontFamily: "Poppins-Medium",
-    fontSize: WIDTH * 0.032,
+    fontSize: wp("4%"),
   },
   buttonContainer: {
-    marginTop: WIDTH * 0.02,
-    width: WIDTH * 0.5,
-    height: WIDTH * 0.08,
-    borderRadius: WIDTH * 0.05,
+    marginTop: wp("3%"),
+    width: wp("38%"),
+    height: wp("12%"),
+    borderRadius: wp("6%"),
     borderColor: Colors.orange,
     borderWidth: 1,
   },
   bottomPart: {
     width: "100%",
-    height: "100%",
+    height: hp("70%"),
     alignItems: "center",
+    justifyContent: "center",
   },
-  containerTitle: {
+  headerTitle: {
     color: Colors.blue,
     alignItems: "center",
     fontFamily: "Poppins-Bold",
-    fontSize: WIDTH * 0.06,
+    fontSize: wp("7.5%"),
   },
   inputContainer: {
-    width: WIDTH / 1.3,
-    height: WIDTH * 0.1,
+    width: wp("76.5%"),
+    height: wp("13%"),
     borderColor: Colors.blue,
     borderWidth: 1,
-    borderRadius: WIDTH * 0.05,
-    marginVertical: WIDTH * 0.015,
+    borderRadius: wp("7%"),
+    marginVertical: wp("2%"),
     alignItems: "center",
-    paddingHorizontal: WIDTH * 0.05,
+    paddingHorizontal: wp("4%"),
     flexDirection: "row",
   },
   passwordInput: {
     width: "80%",
   },
   icon: {
-    marginRight: WIDTH * 0.005,
+    marginRight: wp("1.5%"),
   },
   iconContainer: {
     position: "relative",
@@ -243,30 +254,34 @@ const styles = StyleSheet.create({
   },
   eyeIcon: {
     position: "absolute",
-    right: -WIDTH * 0.08,
+    right: wp("-7%"),
   },
   rememberContainer: {
-    width: "31%",
+    width: wp("50%"),
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
-    marginVertical: 5,
+    justifyContent: "center",
+    marginVertical: hp("1%"),
   },
   rememberText: {
     fontFamily: "Poppins-Medium",
+    display: "flex",
+    alignItems: "center",
+    fontSize: wp("4.5%"),
     color: Colors.blue,
+    marginLeft: wp("2%"),
   },
   loginButton: {
     backgroundColor: Colors.blue,
-    width: WIDTH * 0.5,
-    height: WIDTH * 0.08,
-    borderRadius: WIDTH * 0.05,
-    marginVertical: WIDTH * 0.02,
+    width: wp("40%"),
+    height: wp("12%"),
+    borderRadius: wp("7%"),
+    marginVertical: wp("2%"),
   },
   activity: {
     position: "absolute",
-    top: HEIGHT * 0.5,
-    left: WIDTH * 0.45,
+    top: hp("46%") * 0.46,
+    left: wp("-50%") * 0.45,
   },
 });
 

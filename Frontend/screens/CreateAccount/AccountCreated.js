@@ -15,6 +15,7 @@ function AccountCreated(props) {
   const { userData } = useAuthContext();
   const getProfilePic = () => {
     if (userData?.personalProfile.profilePic !== "") {
+      console.log(userData.personalProfile.profilePic);
       return { uri: userData?.personalProfile.profilePic };
     } else {
       return Avatar;
