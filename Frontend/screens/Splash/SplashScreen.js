@@ -8,7 +8,7 @@ const SplashScreen = () => {
   return (
     <View style={styles.screen}>
       <View style={styles.logoContainer}>
-          <Logo width={150} height={150} />
+        <Logo />
       </View>
       <BodyText style={styles.text}>SHRIZZLE</BodyText>
     </View>
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 100,
     marginBottom: 15,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center",
   },
   theLogo: {
     width: "100%",

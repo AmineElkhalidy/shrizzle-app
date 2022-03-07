@@ -29,6 +29,7 @@ const LoadingAccount = (props) => {
   } = useCreateUserContext();
 
   useEffect(() => {
+    console.log(snapshat, twitter, whatsapp);
     handleSignUp();
   }, []);
 

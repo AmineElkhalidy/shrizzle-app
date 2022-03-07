@@ -76,6 +76,7 @@ export const getUserData = (token) => {
             profilePic
             customLink
             phoneNumber
+            tiktok
           }
           businessProfile {
             bio

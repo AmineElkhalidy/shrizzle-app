@@ -41,7 +41,7 @@ function SocialButton({ handle, isSet, onPress }) {
         return instagram !== "";
       case "Snapchat Profile":
         return snapshat !== "";
-      case "Instagram Profile":
+      case "Discord Profile":
         return discord !== "";
       case "Tiktok Profile":
         return tiktok !== "";
