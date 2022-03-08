@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   View,
   Text,
   ActivityIndicator,
-  Dimensions,
   TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard,
@@ -24,6 +23,9 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
+
+// AsyncStorage
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // const WIDTH = Dimensions.get("window").width;
 // const HEIGHT = Dimensions.get("window").height;
@@ -75,6 +77,19 @@ const LoginScreen = (props) => {
   const changeRememberMeIcon = () => {
     setRememberMe((prevState) => !prevState);
   };
+
+  // clear the Onboarding storage
+  const clearOnboarding = async () => {
+    try {
+      await AsyncStorage.removeItem("@viewedOnboarding");
+    } catch (error) {
+      console.log("Error @clearOnboarding: ", error);
+    }
+  };
+
+  useEffect(() => {
+    clearOnboarding();
+  }, []);
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>

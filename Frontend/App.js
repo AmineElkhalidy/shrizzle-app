@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { View, Text } from "react-native";
+import { View, StyleSheet, ActivityIndicator } from "react-native";
 import GlobalStyles from "./GlobalStyles.js";
 import Contact from "./screens/Contact.js";
-import { SafeAreaView } from "react-native";
 import * as Fonts from "expo-font";
 import AppLoading from "expo-app-loading";
 import NavBar from "./components/Navbar/NavBar";
 
+// AsyncStorage
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+// Colors
+import Colors from "./constants/Colors";
+
 //pages
 import SplashScreen from "./screens/Splash/SplashScreen";
-
+import Onboarding from "./screens/Onboarding/Onboarding.js";
+import LoadingAccount from "./screens/CreateAccount/LoadingAccount.js";
+import UserProfile from "./screens/UserProfile/UserProfile.js";
+import BusinessProfile from "./screens/Settings/Profile/BusinessProfile.js";
+import Connections from "./screens/Connections/Connections.js";
 import GetStarted from "./screens/CreateAccount/GetStarted";
 import LoginScreen from "./screens/Login/LoginScreen";
 import Signup from "./screens/Signup/Signup";
@@ -28,9 +37,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 //contexts
 import CreateUserProvider from "./contexts/CreateUserContext";
 import AuthProvider from "./contexts/AuthContext";
-import LoadingAccount from "./screens/CreateAccount/LoadingAccount.js";
-import UserProfile from "./screens/UserProfile/UserProfile.js";
-import BusinessProfile from "./screens/Settings/Profile/BusinessProfile.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -42,12 +48,38 @@ const fetchFonts = () => {
   });
 };
 
+// Loading for a bit after the onBoarding screen
+const Loading = () => {
+  return (
+    <View style={styles.screen}>
+      <ActivityIndicator size="large" color={Colors.orange} />
+    </View>
+  );
+};
+
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [viewedOnboarding, setViewedOnboarding] = useState(false);
+
+  // check if the user has already seen the Onboarding screen
+  const checkOnboarding = async () => {
+    try {
+      const value = await AsyncStorage.getItem("@viewedOnboarding");
+      if (value !== null) {
+        setViewedOnboarding(true);
+      }
+    } catch (error) {
+      console.log("Error @checkOnboarding", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => setShowSplash(false), 2000);
+    checkOnboarding();
     return () => clearTimeout(timer);
   }, []);
 
@@ -69,6 +101,13 @@ export default function App() {
             {showSplash && (
               <Stack.Screen name="Splash" component={SplashScreen} />
             )}
+            {isLoading ? (
+              <Loading />
+            ) : viewedOnboarding ? (
+              <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            ) : (
+              <Stack.Screen name="Onboarding" component={Onboarding} />
+            )}
             <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="Signup" component={Signup} />
             <Stack.Screen name="GetStarted" component={GetStarted} />
@@ -88,3 +127,12 @@ export default function App() {
     </AuthProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    backgroundColor: Colors.blue,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
