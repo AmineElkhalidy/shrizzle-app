@@ -13,6 +13,7 @@ import { useAuthContext } from "../../contexts/AuthContext";
 import Colors from "../../constants/Colors";
 import { getUserData } from "../../helpers/userDataHelpers/getUserDataHelper";
 import SocialHandle from "../../components/MyProfile/SocialHandle";
+import NavBar from "../../components/Navbar/NavBar";
 
 const WIDTH = Dimensions.get("window").width;
 const HEIGHT = Dimensions.get("window").height;
@@ -89,6 +90,7 @@ function UserProfile(props) {
           </ScrollView>
         </View>
       </View>
+      <NavBar navigation={props.navigation} />
     </View>
   );
 }

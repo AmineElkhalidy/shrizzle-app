@@ -11,4 +11,5 @@ export const PROFILE = [
   "tinder",
   "twitter",
   "whatsapp",
+  "tiktok",
 ];

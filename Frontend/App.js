@@ -37,6 +37,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 //contexts
 import CreateUserProvider from "./contexts/CreateUserContext";
 import AuthProvider from "./contexts/AuthContext";
+import LoadingAccount from "./screens/CreateAccount/LoadingAccount.js";
+import UserProfile from "./screens/UserProfile/UserProfile.js";
+import BusinessProfile from "./screens/Settings/Profile/BusinessProfile.js";
+import SettingsScreen from "./screens/Settings/SettingsScreen.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -121,6 +125,7 @@ export default function App() {
             <Stack.Screen name="LoadingAccount" component={LoadingAccount} />
             <Stack.Screen name="AccountCreated" component={AccountCreated} />
             <Stack.Screen name="MyProfile" component={UserProfile} />
+            <Stack.Screen name="Settings" component={SettingsScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </CreateUserProvider>

@@ -27,6 +27,9 @@ LogBox.ignoreLogs(["Setting a timer"]);
 //contexts
 import { useAuthContext } from "../../contexts/AuthContext";
 
+const WIDTH = Dimensions.get("window").width;
+const HEIGHT = Dimensions.get("window").height;
+
 const Signup = (props) => {
   //contexts
   const { setToken } = useAuthContext();

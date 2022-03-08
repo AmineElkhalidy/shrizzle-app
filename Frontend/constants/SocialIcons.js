@@ -21,7 +21,6 @@ export const ICONS_PATH = [
     name: "snapshat",
     icon: require("../Assets/SocialMediaIcons/Snapchat.png"),
   },
-
   {
     name: "discord",
     icon: require("../Assets/SocialMediaIcons/Discord.png"),

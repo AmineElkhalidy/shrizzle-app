@@ -55,7 +55,7 @@ function SocialHandleModal({ handler, setIsModalOpen }) {
       case "Snapchat Profile":
         setSnapshat(inputText);
         return;
-      case "Instagram Profile":
+      case "Discord Profile":
         setDiscord(inputText);
         return;
       case "Tiktok Profile":
