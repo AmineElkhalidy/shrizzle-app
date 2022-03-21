@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: "100%",
-    marginTop: wp("15%"),
+    marginTop: wp("12%"),
     alignItems: "center",
     justifyContent: "center",
   },

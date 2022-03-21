@@ -30,18 +30,19 @@ const Connection = ({
 
 const styles = StyleSheet.create({
   connection: {
-    width: "80%",
-    height: "15%",
+    width: wp("90%"),
+    height: hp("16%"),
     flexDirection: "row",
     alignItems: "center",
     marginBottom: hp("2%"),
+    marginTop: wp("2%"),
   },
   imageContainer: {
-    width: "30%",
-    height: "100%",
+    width: wp("30%"),
+    height: wp("30%"),
     alignItems: "center",
     justifyContent: "center",
-    marginRight: wp("3%"),
+    marginRight: wp("2%"),
   },
   image: {
     height: "90%",
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
   },
 
   details: {
-    width: "70%",
+    width: wp("60%"),
     height: "100%",
     justifyContent: "center",
   },

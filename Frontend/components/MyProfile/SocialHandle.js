@@ -11,7 +11,10 @@ import {
 import { PROFILE } from "../../constants/profileStructure";
 import { ICONS_PATH } from "../../constants/SocialIcons";
 
-const WIDTH = Dimensions.get("window").width;
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 
 function SocialHandle({ personalProfile }) {
   const [socialHandles, setSocialHandles] = useState([]);
@@ -44,7 +47,10 @@ function SocialHandle({ personalProfile }) {
   return (
     <View style={styles.socialsContainer}>
       {socialHandles.map((handle) => (
-        <TouchableOpacity onPress={() => console.log(handle.value)}>
+        <TouchableOpacity
+          key={handle.name}
+          onPress={() => console.log(handle.value)}
+        >
           <View style={styles.socialButton}>
             <Image source={handle.icon} style={{ ...styles.socialIcon }} />
           </View>
@@ -58,26 +64,26 @@ export default SocialHandle;
 
 const styles = StyleSheet.create({
   socialsContainer: {
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignContent: "center",
     flexDirection: "row",
     flexWrap: "wrap",
   },
   socialButton: {
     //screen dimensions
-    width: WIDTH * 0.18,
-    height: WIDTH * 0.18,
+    width: wp("18%"),
+    height: wp("18%"),
 
     //other styling
     backgroundColor: "transparent",
     justifyContent: "center",
     alignItems: "center",
-    margin: WIDTH * 0.035,
+    margin: wp("3.5%"),
   },
   socialIcon: {
-    width: WIDTH * 0.2,
-    height: WIDTH * 0.2,
+    width: wp("20%"),
+    height: wp("20%"),
     overflow: "hidden",
-    borderRadius: WIDTH * 0.01,
+    borderRadius: wp("1%"),
   },
 });

@@ -29,7 +29,6 @@ function GetStarted(props) {
           <Text style={styles.info}>
             We need some information about you, to setup your profile
           </Text>
-          {/* <Text style={styles.info}>to setup your profile</Text> */}
 
           <View style={styles.imageContainer}>
             <WelcomeImg />
@@ -75,7 +74,7 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins",
   },
   imageContainer: {
-    paddingTop: wp("10%"),
+    paddingTop: wp("20%"),
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

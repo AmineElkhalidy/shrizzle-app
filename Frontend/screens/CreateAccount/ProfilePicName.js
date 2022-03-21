@@ -38,9 +38,6 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 
-const WIDTH = Dimensions.get("window").width;
-const HEIGHT = Dimensions.get("window").height;
-
 function ProfilePicName(props) {
   const [progress, setProgress] = useState(0);
   const [image, setImage] = useState(null);
