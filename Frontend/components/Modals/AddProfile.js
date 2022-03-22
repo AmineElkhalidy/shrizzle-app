@@ -39,7 +39,7 @@ function AddProfile({ setIsAddModalOpen }) {
           <Text style={styles.addButtonText}>Paste Profile Link</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={readNdef}>
+      <TouchableOpacity onPress={() => {}}>
         <View style={styles.shareButton}>
           <Text style={styles.buttonText}>Use NFC</Text>
         </View>

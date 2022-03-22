@@ -52,6 +52,7 @@ const OverView = (props) => {
   useEffect(() => {
     getUser();
   }, []);
+
   return (
     <View style={styles.screen}>
       {/* ===== COVER ===== */}
@@ -185,6 +186,5 @@ const styles = StyleSheet.create({
 export default OverView;
 
 let DEFAULT_COVER = {
-  uri:
-    "https://firebasestorage.googleapis.com/v0/b/shrizzle-82093.appspot.com/o/images%2Fcover.jpg?alt=media&token=f3d9770c-1612-45ac-bfaa-95f06c1e46d3",
+  uri: "https://firebasestorage.googleapis.com/v0/b/shrizzle-82093.appspot.com/o/images%2Fcover.jpg?alt=media&token=f3d9770c-1612-45ac-bfaa-95f06c1e46d3",
 };
