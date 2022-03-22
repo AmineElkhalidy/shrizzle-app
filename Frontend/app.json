@@ -3,6 +3,14 @@
     "name": "shrizzle-frontend",
     "slug": "shrizzle-app",
     "orientation": "portrait",
-    "plugins": ["react-native-nfc-manager"]
+    "plugins": [
+      "react-native-nfc-manager"
+    ],
+    "android": {
+      "permissions": [
+        "android.permission.NFC"
+      ],
+      "package": "com.shrizzle"
+    }
   }
 }
