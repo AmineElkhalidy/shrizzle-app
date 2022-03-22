@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -21,18 +21,60 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 
+// AuthContext
+import { useAuthContext } from "../../contexts/AuthContext";
+
+// getUserData
+import { getUserData } from "../../helpers/userDataHelpers/getUserDataHelper";
+
 const SettingsScreen = (props) => {
+  // extracting the data...
+  const { userData, setUserData, token } = useAuthContext();
+
+  // getUserHandler
+  const getUser = async () => {
+    try {
+      // get the user data
+      const getUserResult = getUserData(token);
+      if (
+        getUserResult.status === 200 &&
+        getUserResult.data.data.getUserData !== null
+      ) {
+        setUserData(getUserResult.data.data.getUserData);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // getProfilePicture
+  const getProfilePic = () => {
+    if (userData?.personalProfile.profilePic !== "") {
+      return { uri: userData?.personalProfile.profilePic };
+    } else {
+      return Image_Http_URL;
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   return (
     <View style={styles.screen}>
       <BodyText style={styles.title}>Settings</BodyText>
       <View style={styles.profileContainer}>
         <View style={styles.container}>
           <View style={styles.imageContainer}>
-            <Image style={styles.image} source={Img} resizeMode="cover" />
+            <Image
+              style={styles.image}
+              source={getProfilePic()}
+              resizeMode="cover"
+            />
           </View>
         </View>
         <View style={styles.dataContainer}>
-          <BodyText style={styles.username}>Anas Samoudi</BodyText>
+          <BodyText style={styles.username}>{userData?.fullName}</BodyText>
 
           <TouchableOpacity activeOpacity={0.2}>
             <View style={styles.icon}>
