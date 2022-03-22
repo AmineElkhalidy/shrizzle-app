@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, ActivityIndicator } from "react-native";
 import GlobalStyles from "./GlobalStyles.js";
-import Contact from "./screens/Contact.js";
 import * as Fonts from "expo-font";
 import AppLoading from "expo-app-loading";
 import NavBar from "./components/Navbar/NavBar";
@@ -36,8 +35,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CreateUserProvider from "./contexts/CreateUserContext";
 import AuthProvider from "./contexts/AuthContext";
 import LoadingAccount from "./screens/CreateAccount/LoadingAccount.js";
-import BusinessProfile from "./screens/Settings/Profile/BusinessProfile.js";
 import SettingsScreen from "./screens/Settings/SettingsScreen.js";
+import Connection from "./components/Connections/Connection.js";
+import OverView from "./screens/Overview/Overview.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -62,7 +62,7 @@ export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-  const [viewedOnboarding, setViewedOnboarding] = useState(false);
+  const [viewedOnboarding, setViewedOnboarding] = useState(true);
 
   // check if the user has already seen the Onboarding screen
   const checkOnboarding = async () => {
@@ -103,7 +103,7 @@ export default function App() {
               <Stack.Screen name="Splash" component={SplashScreen} />
             )}
             {isLoading ? (
-              <Loading />
+              <Stack.Screen name="Loading" component={Loading} />
             ) : viewedOnboarding ? (
               <Stack.Screen name="LoginScreen" component={LoginScreen} />
             ) : (
@@ -123,6 +123,8 @@ export default function App() {
             <Stack.Screen name="AccountCreated" component={AccountCreated} />
             <Stack.Screen name="MyProfile" component={UserProfile} />
             <Stack.Screen name="Settings" component={SettingsScreen} />
+            <Stack.Screen name="Connections" component={Connections} />
+            <Stack.Screen name="Overview" component={OverView} />
           </Stack.Navigator>
         </NavigationContainer>
       </CreateUserProvider>

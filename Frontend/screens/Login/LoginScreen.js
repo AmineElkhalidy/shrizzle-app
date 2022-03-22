@@ -27,22 +27,21 @@ import {
 // AsyncStorage
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-// const WIDTH = Dimensions.get("window").width;
-// const HEIGHT = Dimensions.get("window").height;
-
 const LoginScreen = (props) => {
   //text input
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
 
   //loading
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { setUserData, setToken } = useAuthContext();
 
   const login = async () => {
     try {
+      setIsLoading(true);
       const result = await loginHandler(emailInput, passwordInput);
+
       if (result.status === 200 && result.data.data.login !== null) {
         //get token
         const token = result.data.data.login.token;
@@ -55,7 +54,7 @@ const LoginScreen = (props) => {
           getUserResult.data.data.getUserData !== null
         ) {
           setUserData(getUserResult.data.data.getUserData);
-          props.navigation.navigate("MyProfile");
+          props.navigation.navigate("Overview");
         }
       }
     } catch (err) {
@@ -160,14 +159,6 @@ const LoginScreen = (props) => {
               </View>
             </TouchableOpacity>
 
-            {isLoading && (
-              <ActivityIndicator
-                style={styles.activity}
-                size="small"
-                color={Colors.blue}
-              />
-            )}
-
             <TouchableOpacity onPress={changeRememberMeIcon} activeOpacity={1}>
               <View style={styles.rememberContainer}>
                 <Feather
@@ -184,6 +175,13 @@ const LoginScreen = (props) => {
             </TouchableOpacity>
           </View>
         </View>
+        {isLoading && (
+          <ActivityIndicator
+            style={styles.activity}
+            size="large"
+            color={Colors.blue}
+          />
+        )}
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );
@@ -295,8 +293,8 @@ const styles = StyleSheet.create({
   },
   activity: {
     position: "absolute",
-    top: hp("46%"),
-    left: wp("-50%"),
+    top: hp("87%"),
+    left: wp("45%"),
   },
 });
 

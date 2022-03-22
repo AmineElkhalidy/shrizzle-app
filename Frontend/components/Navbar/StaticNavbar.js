@@ -20,12 +20,14 @@ export default function StaticTabbar({ tabs, value, navigation }) {
 
   const onPressHandler = (index, route) => {
     const tabWidth = width / tabs.length;
+
+    navigation.navigate(route);
     Animated.sequence([
       Animated.parallel(
         values.map((v) =>
           Animated.timing(v, {
             toValue: 0,
-            duration: 100,
+            duration: 200,
             useNativeDriver: true,
           })
         )
@@ -41,7 +43,6 @@ export default function StaticTabbar({ tabs, value, navigation }) {
         }),
       ]),
     ]).start();
-    navigation.navigate(route);
   };
 
   return (

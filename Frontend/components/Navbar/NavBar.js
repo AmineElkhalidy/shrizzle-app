@@ -11,13 +11,18 @@ import { Path, Svg } from "react-native-svg";
 import Colors from "../../constants/Colors";
 import StaticNavbar from "./StaticNavbar";
 
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+
 const AnimatedSvg = Animated.createAnimatedComponent(Svg);
 const { width } = Dimensions.get("window");
 const height = 64;
 const tabs = [
   {
     name: "home",
-    route: "Home",
+    route: "Overview",
   },
   {
     name: "user",
@@ -25,7 +30,7 @@ const tabs = [
   },
   {
     name: "users",
-    route: "MyContact",
+    route: "Connections",
   },
   {
     name: "gear",
@@ -52,7 +57,7 @@ const getPath = () => {
     { x: width + 15, y: height },
     { x: width + tabWidth - 15, y: height },
     { x: width + tabWidth - 10, y: 5 },
-    { x: width + tabWidth + 30, y: -3 },
+    { x: width + tabWidth + 30, y: -1 },
     { x: width + tabWidth, y: 0 },
   ]);
   const right = line()
@@ -103,6 +108,6 @@ const styles = StyleSheet.create({
   },
   navContainer: {
     position: "absolute",
-    bottom: 0,
+    bottom: hp("0%"),
   },
 });

@@ -15,9 +15,6 @@ import { getUserData } from "../../helpers/userDataHelpers/getUserDataHelper";
 import SocialHandle from "../../components/MyProfile/SocialHandle";
 import NavBar from "../../components/Navbar/NavBar";
 
-const WIDTH = Dimensions.get("window").width;
-const HEIGHT = Dimensions.get("window").height;
-
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -42,7 +39,8 @@ function UserProfile(props) {
   };
 
   let Image_Http_URL = {
-    uri: "https://firebasestorage.googleapis.com/v0/b/shrizzle-82093.appspot.com/o/images%2Fcover.jpg?alt=media&token=f3d9770c-1612-45ac-bfaa-95f06c1e46d3",
+    uri:
+      "https://firebasestorage.googleapis.com/v0/b/shrizzle-82093.appspot.com/o/images%2Fcover.jpg?alt=media&token=f3d9770c-1612-45ac-bfaa-95f06c1e46d3",
   };
 
   const getProfilePic = () => {
@@ -55,7 +53,6 @@ function UserProfile(props) {
 
   useEffect(() => {
     getUser();
-    console.log(userData);
   }, []);
 
   return (
@@ -101,6 +98,7 @@ const styles = StyleSheet.create({
   screen: {
     width: wp("100%"),
     height: hp("100%"),
+    flex: 1,
     position: "relative",
   },
   cover: {
@@ -119,10 +117,10 @@ const styles = StyleSheet.create({
   },
 
   profilePic: {
-    width: wp("25%"),
-    height: wp("25%"),
+    width: wp("35%"),
+    height: wp("35%"),
     borderRadius: wp("50%"),
-    marginTop: wp("-10%"),
+    marginTop: wp("-15%"),
     borderWidth: 2,
     borderColor: "#edd",
   },
@@ -130,7 +128,7 @@ const styles = StyleSheet.create({
   profileName: {
     marginTop: wp("1%"),
     marginLeft: wp("4%"),
-    fontSize: wp("5.5%"),
+    fontSize: wp("7"),
     fontFamily: "Poppins-Medium",
   },
 
@@ -142,7 +140,7 @@ const styles = StyleSheet.create({
 
   title: {
     marginTop: wp("3%"),
-    fontSize: wp("5.25%"),
-    fontFamily: "Poppins",
+    fontSize: wp("7"),
+    fontFamily: "Poppins-Medium",
   },
 });

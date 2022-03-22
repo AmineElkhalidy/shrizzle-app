@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, TextInput } from "react-native";
 
 // Importing the icon from AntDesign
 import { AntDesign } from "@expo/vector-icons";
-
+import NavBar from "../../components/Navbar/NavBar";
 // responsiveness
 import {
   widthPercentageToDP as wp,
@@ -14,7 +14,7 @@ import {
 import Img from "../../Assets/TestPictures/avatar.png";
 import Connection from "../../components/Connections/Connection";
 
-const Connections = () => {
+const Connections = (props) => {
   return (
     <View style={styles.screen}>
       {/* Text Container */}
@@ -47,6 +47,8 @@ const Connections = () => {
           profileStatus="Connected Now"
         />
       </View>
+
+      <NavBar navigation={props.navigation} />
     </View>
   );
 };

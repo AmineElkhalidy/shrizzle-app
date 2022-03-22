@@ -14,8 +14,14 @@ import BodyText from "../../components/Text/BodyText";
 import Colors from "../../constants/Colors";
 import Img from "../../Assets/TestPictures/testpdp.jpg";
 import IconContainer from "../../components/UI/IconContainer";
+import NavBar from "../../components/Navbar/NavBar";
+// responsiveness
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 
-const SettingsScreen = () => {
+const SettingsScreen = (props) => {
   return (
     <View style={styles.screen}>
       <BodyText style={styles.title}>Settings</BodyText>
@@ -96,7 +102,11 @@ const SettingsScreen = () => {
 
             <View style={styles.optionContainer}>
               <BodyText style={styles.optionText}>Dark Mode</BodyText>
-              <MaterialCommunityIcons name="toggle-switch" size={25} color={Colors.green} />
+              <MaterialCommunityIcons
+                name="toggle-switch"
+                size={25}
+                color={Colors.green}
+              />
             </View>
           </View>
 
@@ -169,12 +179,15 @@ const SettingsScreen = () => {
           </View>
         </View>
       </View>
+      <NavBar navigation={props.navigation} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   screen: {
+    width: wp("100%"),
+    height: hp("100%"),
     flex: 1,
   },
   title: {
