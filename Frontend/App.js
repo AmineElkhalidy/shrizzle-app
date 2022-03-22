@@ -15,9 +15,7 @@ import Colors from "./constants/Colors";
 //pages
 import SplashScreen from "./screens/Splash/SplashScreen";
 import Onboarding from "./screens/Onboarding/Onboarding.js";
-import LoadingAccount from "./screens/CreateAccount/LoadingAccount.js";
 import UserProfile from "./screens/UserProfile/UserProfile.js";
-import BusinessProfile from "./screens/Settings/Profile/BusinessProfile.js";
 import Connections from "./screens/Connections/Connections.js";
 import GetStarted from "./screens/CreateAccount/GetStarted";
 import LoginScreen from "./screens/Login/LoginScreen";
@@ -38,7 +36,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CreateUserProvider from "./contexts/CreateUserContext";
 import AuthProvider from "./contexts/AuthContext";
 import LoadingAccount from "./screens/CreateAccount/LoadingAccount.js";
-import UserProfile from "./screens/UserProfile/UserProfile.js";
 import BusinessProfile from "./screens/Settings/Profile/BusinessProfile.js";
 import SettingsScreen from "./screens/Settings/SettingsScreen.js";
 
